@@ -27,13 +27,13 @@ namespace Coursework
         }
         private void button_add_progress_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                study[i].Subject = textBox_subject1.Text;
-                study[i].Name_teacher = textBox_teacher1.Text;
-                study[i].Mark = Convert.ToDouble(numeric_mark1.Value);
-                //count++;
-            }            
+            //for (int i = 0; i < 5; i++)
+            //{
+                study[count].Subject = textBox_subject1.Text;
+                study[count].Name_teacher = textBox_teacher1.Text;
+                study[count].Mark = Convert.ToDouble(numeric_mark1.Value);
+                count++;
+            //}            
             Close();
         }
         private void button_Cancel_Click(object sender, EventArgs e)

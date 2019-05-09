@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.Name_student = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Record_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +50,7 @@
             this.Teacher5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mark5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Menu = new System.Windows.Forms.TabControl();
-            this.Create = new System.Windows.Forms.TabPage();
+            this.tabPageCreate = new System.Windows.Forms.TabPage();
             this.button_password = new System.Windows.Forms.Button();
             this.textBox_password = new System.Windows.Forms.TextBox();
             this.richText = new System.Windows.Forms.RichTextBox();
@@ -63,31 +64,32 @@
             this.textBox_record = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_name = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutTheProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.password = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tabPageEdit = new System.Windows.Forms.TabPage();
+            this.button_change_progress = new System.Windows.Forms.Button();
+            this.button_choose_subject = new System.Windows.Forms.Button();
+            this.choose_subject = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
-            this.numeric_mark1 = new System.Windows.Forms.NumericUpDown();
+            this.button_change_data = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox_teacher1 = new System.Windows.Forms.TextBox();
+            this.edit_teacher = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox_subject1 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.edit_subject = new System.Windows.Forms.TextBox();
+            this.edit_course = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.edit_faculty = new System.Windows.Forms.TextBox();
+            this.edit_record = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.edit_name = new System.Windows.Forms.TextBox();
+            this.tabPageSearch = new System.Windows.Forms.TabPage();
+            this.button_Delete = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.button_check_password = new System.Windows.Forms.Button();
+            this.textBox_check_password = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.richTextBox_search = new System.Windows.Forms.RichTextBox();
             this.button_search = new System.Windows.Forms.Button();
             this.textBox_search = new System.Windows.Forms.TextBox();
@@ -97,19 +99,28 @@
             this.button_dupes = new System.Windows.Forms.Button();
             this.button_thebest = new System.Windows.Forms.Button();
             this.richTextInformation = new System.Windows.Forms.RichTextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutTheProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.edit_mark = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.Menu.SuspendLayout();
-            this.Create.SuspendLayout();
+            this.tabPageCreate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_course)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric_mark1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.tabPage3.SuspendLayout();
+            this.tabPageEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.choose_subject)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edit_course)).BeginInit();
+            this.tabPageSearch.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.edit_mark)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -140,7 +151,7 @@
             this.dataGridView.Location = new System.Drawing.Point(3, 3);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(1000, 384);
+            this.dataGridView.Size = new System.Drawing.Size(998, 384);
             this.dataGridView.TabIndex = 0;
             // 
             // Name_student
@@ -248,42 +259,41 @@
             // 
             // Menu
             // 
-            this.Menu.Controls.Add(this.Create);
+            this.Menu.Controls.Add(this.tabPageCreate);
             this.Menu.Controls.Add(this.tabPage2);
-            this.Menu.Controls.Add(this.tabPage1);
-            this.Menu.Controls.Add(this.tabPage3);
+            this.Menu.Controls.Add(this.tabPageEdit);
+            this.Menu.Controls.Add(this.tabPageSearch);
             this.Menu.Controls.Add(this.tabPage5);
             this.Menu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Menu.Location = new System.Drawing.Point(0, 0);
+            this.Menu.Location = new System.Drawing.Point(0, 28);
             this.Menu.Name = "Menu";
             this.Menu.SelectedIndex = 0;
-            this.Menu.Size = new System.Drawing.Size(1014, 419);
+            this.Menu.Size = new System.Drawing.Size(1012, 419);
             this.Menu.TabIndex = 1;
             // 
-            // Create
+            // tabPageCreate
             // 
-            this.Create.BackColor = System.Drawing.Color.Gainsboro;
-            this.Create.Controls.Add(this.button_password);
-            this.Create.Controls.Add(this.textBox_password);
-            this.Create.Controls.Add(this.richText);
-            this.Create.Controls.Add(this.button_grid);
-            this.Create.Controls.Add(this.numeric_course);
-            this.Create.Controls.Add(this.button_add);
-            this.Create.Controls.Add(this.label4);
-            this.Create.Controls.Add(this.label3);
-            this.Create.Controls.Add(this.label2);
-            this.Create.Controls.Add(this.textBox_faculty);
-            this.Create.Controls.Add(this.textBox_record);
-            this.Create.Controls.Add(this.label1);
-            this.Create.Controls.Add(this.textBox_name);
-            this.Create.Controls.Add(this.menuStrip1);
-            this.Create.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Create.Location = new System.Drawing.Point(4, 25);
-            this.Create.Name = "Create";
-            this.Create.Padding = new System.Windows.Forms.Padding(3);
-            this.Create.Size = new System.Drawing.Size(1006, 390);
-            this.Create.TabIndex = 0;
-            this.Create.Text = "Create";
+            this.tabPageCreate.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPageCreate.Controls.Add(this.button_password);
+            this.tabPageCreate.Controls.Add(this.textBox_password);
+            this.tabPageCreate.Controls.Add(this.richText);
+            this.tabPageCreate.Controls.Add(this.button_grid);
+            this.tabPageCreate.Controls.Add(this.numeric_course);
+            this.tabPageCreate.Controls.Add(this.button_add);
+            this.tabPageCreate.Controls.Add(this.label4);
+            this.tabPageCreate.Controls.Add(this.label3);
+            this.tabPageCreate.Controls.Add(this.label2);
+            this.tabPageCreate.Controls.Add(this.textBox_faculty);
+            this.tabPageCreate.Controls.Add(this.textBox_record);
+            this.tabPageCreate.Controls.Add(this.label1);
+            this.tabPageCreate.Controls.Add(this.textBox_name);
+            this.tabPageCreate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.tabPageCreate.Location = new System.Drawing.Point(4, 25);
+            this.tabPageCreate.Name = "tabPageCreate";
+            this.tabPageCreate.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCreate.Size = new System.Drawing.Size(1004, 390);
+            this.tabPageCreate.TabIndex = 0;
+            this.tabPageCreate.Text = "Create";
             // 
             // button_password
             // 
@@ -405,48 +415,6 @@
             this.textBox_name.Size = new System.Drawing.Size(193, 22);
             this.textBox_name.TabIndex = 0;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.aboutTheProgramToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(3, 3);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1000, 28);
-            this.menuStrip1.TabIndex = 29;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
-            this.saveToolStripMenuItem.Text = "Save ";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // aboutTheProgramToolStripMenuItem
-            // 
-            this.aboutTheProgramToolStripMenuItem.Name = "aboutTheProgramToolStripMenuItem";
-            this.aboutTheProgramToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
-            this.aboutTheProgramToolStripMenuItem.Text = "About the program";
-            this.aboutTheProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutTheProgramToolStripMenuItem_Click);
-            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Gainsboro;
@@ -454,90 +422,100 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1006, 390);
+            this.tabPage2.Size = new System.Drawing.Size(1004, 390);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "View data";
             // 
-            // tabPage1
+            // tabPageEdit
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Gainsboro;
-            this.tabPage1.Controls.Add(this.password);
-            this.tabPage1.Controls.Add(this.textBox4);
-            this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.numeric_mark1);
-            this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.textBox_teacher1);
-            this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.textBox_subject1);
-            this.tabPage1.Controls.Add(this.numericUpDown1);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.textBox1);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1006, 390);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Edit";
+            this.tabPageEdit.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPageEdit.Controls.Add(this.edit_mark);
+            this.tabPageEdit.Controls.Add(this.button_change_progress);
+            this.tabPageEdit.Controls.Add(this.button_choose_subject);
+            this.tabPageEdit.Controls.Add(this.choose_subject);
+            this.tabPageEdit.Controls.Add(this.label13);
+            this.tabPageEdit.Controls.Add(this.button_change_data);
+            this.tabPageEdit.Controls.Add(this.label10);
+            this.tabPageEdit.Controls.Add(this.label11);
+            this.tabPageEdit.Controls.Add(this.edit_teacher);
+            this.tabPageEdit.Controls.Add(this.label12);
+            this.tabPageEdit.Controls.Add(this.edit_subject);
+            this.tabPageEdit.Controls.Add(this.edit_course);
+            this.tabPageEdit.Controls.Add(this.label6);
+            this.tabPageEdit.Controls.Add(this.label7);
+            this.tabPageEdit.Controls.Add(this.label8);
+            this.tabPageEdit.Controls.Add(this.edit_faculty);
+            this.tabPageEdit.Controls.Add(this.edit_record);
+            this.tabPageEdit.Controls.Add(this.label9);
+            this.tabPageEdit.Controls.Add(this.edit_name);
+            this.tabPageEdit.Location = new System.Drawing.Point(4, 25);
+            this.tabPageEdit.Name = "tabPageEdit";
+            this.tabPageEdit.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageEdit.Size = new System.Drawing.Size(1004, 390);
+            this.tabPageEdit.TabIndex = 2;
+            this.tabPageEdit.Text = "Edit";
             // 
-            // password
+            // button_change_progress
             // 
-            this.password.Location = new System.Drawing.Point(410, 18);
-            this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(100, 33);
-            this.password.TabIndex = 45;
-            this.password.Text = "Enter";
-            this.password.UseVisualStyleBackColor = true;
+            this.button_change_progress.Location = new System.Drawing.Point(537, 215);
+            this.button_change_progress.Name = "button_change_progress";
+            this.button_change_progress.Size = new System.Drawing.Size(151, 33);
+            this.button_change_progress.TabIndex = 50;
+            this.button_change_progress.Text = "Change";
+            this.button_change_progress.UseVisualStyleBackColor = true;
+            this.button_change_progress.Click += new System.EventHandler(this.button_change_progress_Click);
             // 
-            // textBox4
+            // button_choose_subject
             // 
-            this.textBox4.Location = new System.Drawing.Point(232, 23);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(153, 22);
-            this.textBox4.TabIndex = 44;
+            this.button_choose_subject.Location = new System.Drawing.Point(704, 46);
+            this.button_choose_subject.Name = "button_choose_subject";
+            this.button_choose_subject.Size = new System.Drawing.Size(93, 27);
+            this.button_choose_subject.TabIndex = 49;
+            this.button_choose_subject.Text = "Choose";
+            this.button_choose_subject.UseVisualStyleBackColor = true;
+            this.button_choose_subject.Click += new System.EventHandler(this.button_choose_subject_Click);
             // 
-            // label13
+            // choose_subject
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(26, 26);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(191, 17);
-            this.label13.TabIndex = 43;
-            this.label13.Text = "For edit data, input password";
-            // 
-            // numeric_mark1
-            // 
-            this.numeric_mark1.DecimalPlaces = 1;
-            this.numeric_mark1.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numeric_mark1.Location = new System.Drawing.Point(605, 224);
-            this.numeric_mark1.Maximum = new decimal(new int[] {
+            this.choose_subject.Location = new System.Drawing.Point(632, 49);
+            this.choose_subject.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.numeric_mark1.Name = "numeric_mark1";
-            this.numeric_mark1.Size = new System.Drawing.Size(193, 22);
-            this.numeric_mark1.TabIndex = 42;
-            this.numeric_mark1.ThousandsSeparator = true;
-            this.numeric_mark1.Value = new decimal(new int[] {
+            this.choose_subject.Name = "choose_subject";
+            this.choose_subject.Size = new System.Drawing.Size(56, 22);
+            this.choose_subject.TabIndex = 48;
+            this.choose_subject.ThousandsSeparator = true;
+            this.choose_subject.Value = new decimal(new int[] {
             10,
             0,
             0,
             65536});
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(450, 48);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(176, 17);
+            this.label13.TabIndex = 47;
+            this.label13.Text = "Choose subject, for editing";
+            // 
+            // button_change_data
+            // 
+            this.button_change_data.Location = new System.Drawing.Point(87, 215);
+            this.button_change_data.Name = "button_change_data";
+            this.button_change_data.Size = new System.Drawing.Size(151, 33);
+            this.button_change_data.TabIndex = 46;
+            this.button_change_data.Text = "Change";
+            this.button_change_data.UseVisualStyleBackColor = true;
+            this.button_change_data.Click += new System.EventHandler(this.button_change_data_Click);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(484, 226);
+            this.label10.Location = new System.Drawing.Point(450, 162);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(103, 17);
             this.label10.TabIndex = 41;
@@ -546,48 +524,48 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(484, 187);
+            this.label11.Location = new System.Drawing.Point(450, 123);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 17);
             this.label11.TabIndex = 40;
             this.label11.Text = "Teachers";
             // 
-            // textBox_teacher1
+            // edit_teacher
             // 
-            this.textBox_teacher1.Location = new System.Drawing.Point(605, 184);
-            this.textBox_teacher1.Name = "textBox_teacher1";
-            this.textBox_teacher1.Size = new System.Drawing.Size(193, 22);
-            this.textBox_teacher1.TabIndex = 39;
+            this.edit_teacher.Location = new System.Drawing.Point(571, 120);
+            this.edit_teacher.Name = "edit_teacher";
+            this.edit_teacher.Size = new System.Drawing.Size(226, 22);
+            this.edit_teacher.TabIndex = 39;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(484, 149);
+            this.label12.Location = new System.Drawing.Point(450, 85);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(62, 17);
             this.label12.TabIndex = 38;
             this.label12.Text = "Subjects";
             // 
-            // textBox_subject1
+            // edit_subject
             // 
-            this.textBox_subject1.Location = new System.Drawing.Point(605, 146);
-            this.textBox_subject1.Name = "textBox_subject1";
-            this.textBox_subject1.Size = new System.Drawing.Size(193, 22);
-            this.textBox_subject1.TabIndex = 37;
+            this.edit_subject.Location = new System.Drawing.Point(571, 82);
+            this.edit_subject.Name = "edit_subject";
+            this.edit_subject.Size = new System.Drawing.Size(226, 22);
+            this.edit_subject.TabIndex = 37;
             // 
-            // numericUpDown1
+            // edit_course
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(146, 263);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.edit_course.Location = new System.Drawing.Point(137, 163);
+            this.edit_course.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(193, 22);
-            this.numericUpDown1.TabIndex = 24;
-            this.numericUpDown1.ThousandsSeparator = true;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.edit_course.Name = "edit_course";
+            this.edit_course.Size = new System.Drawing.Size(229, 22);
+            this.edit_course.TabIndex = 24;
+            this.edit_course.ThousandsSeparator = true;
+            this.edit_course.Value = new decimal(new int[] {
             10,
             0,
             0,
@@ -596,7 +574,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 265);
+            this.label6.Location = new System.Drawing.Point(16, 165);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(105, 17);
             this.label6.TabIndex = 23;
@@ -605,7 +583,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 228);
+            this.label7.Location = new System.Drawing.Point(15, 128);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 17);
             this.label7.TabIndex = 22;
@@ -614,61 +592,114 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 186);
+            this.label8.Location = new System.Drawing.Point(15, 86);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(106, 17);
             this.label8.TabIndex = 21;
             this.label8.Text = "Record number";
             // 
-            // textBox1
+            // edit_faculty
             // 
-            this.textBox1.Location = new System.Drawing.Point(146, 225);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 22);
-            this.textBox1.TabIndex = 20;
+            this.edit_faculty.Location = new System.Drawing.Point(137, 125);
+            this.edit_faculty.Name = "edit_faculty";
+            this.edit_faculty.Size = new System.Drawing.Size(229, 22);
+            this.edit_faculty.TabIndex = 20;
             // 
-            // textBox2
+            // edit_record
             // 
-            this.textBox2.Location = new System.Drawing.Point(146, 186);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(193, 22);
-            this.textBox2.TabIndex = 19;
+            this.edit_record.Location = new System.Drawing.Point(137, 86);
+            this.edit_record.Name = "edit_record";
+            this.edit_record.Size = new System.Drawing.Size(229, 22);
+            this.edit_record.TabIndex = 19;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 151);
+            this.label9.Location = new System.Drawing.Point(15, 51);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(116, 17);
+            this.label9.Size = new System.Drawing.Size(49, 17);
             this.label9.TabIndex = 18;
-            this.label9.Text = "Name and initials";
+            this.label9.Text = "Name ";
             // 
-            // textBox3
+            // edit_name
             // 
-            this.textBox3.Location = new System.Drawing.Point(146, 148);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(193, 22);
-            this.textBox3.TabIndex = 17;
+            this.edit_name.Location = new System.Drawing.Point(137, 48);
+            this.edit_name.Name = "edit_name";
+            this.edit_name.Size = new System.Drawing.Size(229, 22);
+            this.edit_name.TabIndex = 17;
             // 
-            // tabPage3
+            // tabPageSearch
             // 
-            this.tabPage3.BackColor = System.Drawing.Color.Gainsboro;
-            this.tabPage3.Controls.Add(this.richTextBox_search);
-            this.tabPage3.Controls.Add(this.button_search);
-            this.tabPage3.Controls.Add(this.textBox_search);
-            this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1006, 390);
-            this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "Search";
+            this.tabPageSearch.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPageSearch.Controls.Add(this.button_Delete);
+            this.tabPageSearch.Controls.Add(this.label15);
+            this.tabPageSearch.Controls.Add(this.button_check_password);
+            this.tabPageSearch.Controls.Add(this.textBox_check_password);
+            this.tabPageSearch.Controls.Add(this.label14);
+            this.tabPageSearch.Controls.Add(this.richTextBox_search);
+            this.tabPageSearch.Controls.Add(this.button_search);
+            this.tabPageSearch.Controls.Add(this.textBox_search);
+            this.tabPageSearch.Controls.Add(this.label5);
+            this.tabPageSearch.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSearch.Name = "tabPageSearch";
+            this.tabPageSearch.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearch.Size = new System.Drawing.Size(1004, 390);
+            this.tabPageSearch.TabIndex = 3;
+            this.tabPageSearch.Text = "Search";
+            // 
+            // button_Delete
+            // 
+            this.button_Delete.Location = new System.Drawing.Point(731, 203);
+            this.button_Delete.Name = "button_Delete";
+            this.button_Delete.Size = new System.Drawing.Size(129, 33);
+            this.button_Delete.TabIndex = 50;
+            this.button_Delete.Text = "Delete";
+            this.button_Delete.UseVisualStyleBackColor = true;
+            this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(655, 166);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(271, 17);
+            this.label15.TabIndex = 49;
+            this.label15.Text = "To be able to delete student, enter button";
+            this.toolTip1.SetToolTip(this.label15, "To unlock the button, find the first student");
+            // 
+            // button_check_password
+            // 
+            this.button_check_password.Location = new System.Drawing.Point(847, 103);
+            this.button_check_password.Name = "button_check_password";
+            this.button_check_password.Size = new System.Drawing.Size(100, 33);
+            this.button_check_password.TabIndex = 48;
+            this.button_check_password.Text = "Enter";
+            this.button_check_password.UseVisualStyleBackColor = true;
+            this.button_check_password.Click += new System.EventHandler(this.button_check_password_Click);
+            // 
+            // textBox_check_password
+            // 
+            this.textBox_check_password.Location = new System.Drawing.Point(658, 108);
+            this.textBox_check_password.Name = "textBox_check_password";
+            this.textBox_check_password.Size = new System.Drawing.Size(153, 22);
+            this.textBox_check_password.TabIndex = 47;
+            this.toolTip1.SetToolTip(this.textBox_check_password, "Your password is on the Page Create");
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(655, 73);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(304, 17);
+            this.label14.TabIndex = 46;
+            this.label14.Text = "To be able to edit the data, enter the password";
+            this.toolTip1.SetToolTip(this.label14, "To unlock the button, find the first student");
             // 
             // richTextBox_search
             // 
             this.richTextBox_search.Location = new System.Drawing.Point(27, 73);
             this.richTextBox_search.Name = "richTextBox_search";
-            this.richTextBox_search.Size = new System.Drawing.Size(590, 309);
+            this.richTextBox_search.Size = new System.Drawing.Size(590, 301);
             this.richTextBox_search.TabIndex = 3;
             this.richTextBox_search.Text = "";
             // 
@@ -708,7 +739,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1006, 390);
+            this.tabPage5.Size = new System.Drawing.Size(1004, 390);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Show information";
             // 
@@ -720,6 +751,7 @@
             this.button_discipline.TabIndex = 3;
             this.button_discipline.Text = "Discipline on which more twos";
             this.button_discipline.UseVisualStyleBackColor = true;
+            this.button_discipline.Click += new System.EventHandler(this.button_discipline_Click);
             // 
             // button_dupes
             // 
@@ -746,9 +778,58 @@
             this.richTextInformation.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.richTextInformation.Location = new System.Drawing.Point(3, 164);
             this.richTextInformation.Name = "richTextInformation";
-            this.richTextInformation.Size = new System.Drawing.Size(1000, 223);
+            this.richTextInformation.Size = new System.Drawing.Size(998, 223);
             this.richTextInformation.TabIndex = 0;
             this.richTextInformation.Text = "";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.aboutTheProgramToolStripMenuItem,
+            this.referenceToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1012, 28);
+            this.menuStrip1.TabIndex = 29;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.saveToolStripMenuItem.Text = "Save ";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // aboutTheProgramToolStripMenuItem
+            // 
+            this.aboutTheProgramToolStripMenuItem.Name = "aboutTheProgramToolStripMenuItem";
+            this.aboutTheProgramToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
+            this.aboutTheProgramToolStripMenuItem.Text = "About the program";
+            this.aboutTheProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutTheProgramToolStripMenuItem_Click);
+            // 
+            // referenceToolStripMenuItem
+            // 
+            this.referenceToolStripMenuItem.Name = "referenceToolStripMenuItem";
+            this.referenceToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
+            this.referenceToolStripMenuItem.Text = "Reference";
             // 
             // openFileDialog1
             // 
@@ -759,31 +840,52 @@
             // 
             this.saveFileDialog1.DefaultExt = "txt";
             // 
+            // edit_mark
+            // 
+            this.edit_mark.Location = new System.Drawing.Point(571, 165);
+            this.edit_mark.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.edit_mark.Name = "edit_mark";
+            this.edit_mark.Size = new System.Drawing.Size(226, 22);
+            this.edit_mark.TabIndex = 51;
+            this.edit_mark.ThousandsSeparator = true;
+            this.edit_mark.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 419);
+            this.ClientSize = new System.Drawing.Size(1012, 447);
             this.Controls.Add(this.Menu);
+            this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Database students";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.Menu.ResumeLayout(false);
-            this.Create.ResumeLayout(false);
-            this.Create.PerformLayout();
+            this.tabPageCreate.ResumeLayout(false);
+            this.tabPageCreate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_course)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPageEdit.ResumeLayout(false);
+            this.tabPageEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.choose_subject)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edit_course)).EndInit();
+            this.tabPageSearch.ResumeLayout(false);
+            this.tabPageSearch.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric_mark1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.edit_mark)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -791,10 +893,10 @@
 
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.TabControl Menu;
-        private System.Windows.Forms.TabPage Create;
+        private System.Windows.Forms.TabPage tabPageCreate;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPageEdit;
+        private System.Windows.Forms.TabPage tabPageSearch;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TextBox textBox_faculty;
         private System.Windows.Forms.TextBox textBox_record;
@@ -837,29 +939,38 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button_password;
         private System.Windows.Forms.TextBox textBox_password;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown edit_course;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox edit_faculty;
+        private System.Windows.Forms.TextBox edit_record;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button password;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown numeric_mark1;
+        private System.Windows.Forms.TextBox edit_name;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox_teacher1;
+        private System.Windows.Forms.TextBox edit_teacher;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox_subject1;
+        private System.Windows.Forms.TextBox edit_subject;
         private System.Windows.Forms.Button button_discipline;
         private System.Windows.Forms.Button button_dupes;
         private System.Windows.Forms.Button button_thebest;
         private System.Windows.Forms.ToolStripMenuItem aboutTheProgramToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
+        private System.Windows.Forms.Button button_change_data;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button button_change_progress;
+        private System.Windows.Forms.Button button_choose_subject;
+        private System.Windows.Forms.NumericUpDown choose_subject;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button button_Delete;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button_check_password;
+        private System.Windows.Forms.TextBox textBox_check_password;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown edit_mark;
     }
 }
 

@@ -51,12 +51,6 @@
             // 
             // numeric_mark1
             // 
-            this.numeric_mark1.DecimalPlaces = 1;
-            this.numeric_mark1.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.numeric_mark1.Location = new System.Drawing.Point(154, 101);
             this.numeric_mark1.Maximum = new decimal(new int[] {
             5,
