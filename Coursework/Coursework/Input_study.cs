@@ -29,6 +29,8 @@ namespace Coursework
         {
             //for (int i = 0; i < 5; i++)
             //{
+            if (count >= 5)
+                count = 0;
                 study[count].Subject = textBox_subject1.Text;
                 study[count].Name_teacher = textBox_teacher1.Text;
                 study[count].Mark = Convert.ToDouble(numeric_mark1.Value);
@@ -39,6 +41,32 @@ namespace Coursework
         private void button_Cancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        void Check_input_text(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('\b')) return;
+            if(e.KeyChar.Equals(' ')) return;
+            var tb = (TextBox)sender;
+            if (e.KeyChar.Equals('-'))
+            {
+                e.Handled = tb.SelectionStart == 0 || tb.Text[tb.SelectionStart - 1].Equals('-');
+                if (!e.Handled)
+                {
+                    return;
+                }
+            }
+            e.Handled = !char.IsLetter(e.KeyChar);
+        }
+
+        private void textBox_subject1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Check_input_text(sender, e);
+        }
+
+        private void textBox_teacher1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Check_input_text(sender, e);
         }
     }
 }

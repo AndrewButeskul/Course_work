@@ -57,6 +57,11 @@
             0,
             0,
             0});
+            this.numeric_mark1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numeric_mark1.Name = "numeric_mark1";
             this.numeric_mark1.Size = new System.Drawing.Size(193, 22);
             this.numeric_mark1.TabIndex = 36;
@@ -91,6 +96,7 @@
             this.textBox_teacher1.Name = "textBox_teacher1";
             this.textBox_teacher1.Size = new System.Drawing.Size(193, 22);
             this.textBox_teacher1.TabIndex = 33;
+            this.textBox_teacher1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_teacher1_KeyPress);
             // 
             // label5
             // 
@@ -107,6 +113,7 @@
             this.textBox_subject1.Name = "textBox_subject1";
             this.textBox_subject1.Size = new System.Drawing.Size(193, 22);
             this.textBox_subject1.TabIndex = 31;
+            this.textBox_subject1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_subject1_KeyPress);
             // 
             // button_Cancel
             // 

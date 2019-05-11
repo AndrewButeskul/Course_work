@@ -66,6 +66,7 @@
             this.textBox_name = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPageEdit = new System.Windows.Forms.TabPage();
+            this.edit_mark = new System.Windows.Forms.NumericUpDown();
             this.button_change_progress = new System.Windows.Forms.Button();
             this.button_choose_subject = new System.Windows.Forms.Button();
             this.choose_subject = new System.Windows.Forms.NumericUpDown();
@@ -108,19 +109,18 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.edit_mark = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.Menu.SuspendLayout();
             this.tabPageCreate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_course)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPageEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.edit_mark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.choose_subject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edit_course)).BeginInit();
             this.tabPageSearch.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.edit_mark)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -316,7 +316,7 @@
             // 
             this.richText.Location = new System.Drawing.Point(391, 59);
             this.richText.Name = "richText";
-            this.richText.Size = new System.Drawing.Size(607, 258);
+            this.richText.Size = new System.Drawing.Size(585, 237);
             this.richText.TabIndex = 32;
             this.richText.Text = "";
             // 
@@ -338,15 +338,20 @@
             0,
             0,
             0});
+            this.numeric_course.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numeric_course.Name = "numeric_course";
             this.numeric_course.Size = new System.Drawing.Size(193, 22);
             this.numeric_course.TabIndex = 16;
             this.numeric_course.ThousandsSeparator = true;
             this.numeric_course.Value = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
-            65536});
+            0});
             // 
             // button_add
             // 
@@ -391,6 +396,7 @@
             this.textBox_faculty.Name = "textBox_faculty";
             this.textBox_faculty.Size = new System.Drawing.Size(193, 22);
             this.textBox_faculty.TabIndex = 3;
+            this.textBox_faculty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_faculty_KeyPress);
             // 
             // textBox_record
             // 
@@ -398,6 +404,7 @@
             this.textBox_record.Name = "textBox_record";
             this.textBox_record.Size = new System.Drawing.Size(193, 22);
             this.textBox_record.TabIndex = 2;
+            this.textBox_record.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_record_KeyPress);
             // 
             // label1
             // 
@@ -414,6 +421,7 @@
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(193, 22);
             this.textBox_name.TabIndex = 0;
+            this.textBox_name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_name_KeyPress_1);
             // 
             // tabPage2
             // 
@@ -455,6 +463,29 @@
             this.tabPageEdit.TabIndex = 2;
             this.tabPageEdit.Text = "Edit";
             // 
+            // edit_mark
+            // 
+            this.edit_mark.Location = new System.Drawing.Point(571, 165);
+            this.edit_mark.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.edit_mark.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.edit_mark.Name = "edit_mark";
+            this.edit_mark.Size = new System.Drawing.Size(226, 22);
+            this.edit_mark.TabIndex = 51;
+            this.edit_mark.ThousandsSeparator = true;
+            this.edit_mark.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // button_change_progress
             // 
             this.button_change_progress.Location = new System.Drawing.Point(537, 215);
@@ -483,15 +514,20 @@
             0,
             0,
             0});
+            this.choose_subject.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.choose_subject.Name = "choose_subject";
             this.choose_subject.Size = new System.Drawing.Size(56, 22);
             this.choose_subject.TabIndex = 48;
             this.choose_subject.ThousandsSeparator = true;
             this.choose_subject.Value = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
-            65536});
+            0});
             // 
             // label13
             // 
@@ -536,6 +572,7 @@
             this.edit_teacher.Name = "edit_teacher";
             this.edit_teacher.Size = new System.Drawing.Size(226, 22);
             this.edit_teacher.TabIndex = 39;
+            this.edit_teacher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edit_teacher_KeyPress);
             // 
             // label12
             // 
@@ -552,6 +589,7 @@
             this.edit_subject.Name = "edit_subject";
             this.edit_subject.Size = new System.Drawing.Size(226, 22);
             this.edit_subject.TabIndex = 37;
+            this.edit_subject.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edit_subject_KeyPress);
             // 
             // edit_course
             // 
@@ -561,15 +599,20 @@
             0,
             0,
             0});
+            this.edit_course.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.edit_course.Name = "edit_course";
             this.edit_course.Size = new System.Drawing.Size(229, 22);
             this.edit_course.TabIndex = 24;
             this.edit_course.ThousandsSeparator = true;
             this.edit_course.Value = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
-            65536});
+            0});
             // 
             // label6
             // 
@@ -604,6 +647,7 @@
             this.edit_faculty.Name = "edit_faculty";
             this.edit_faculty.Size = new System.Drawing.Size(229, 22);
             this.edit_faculty.TabIndex = 20;
+            this.edit_faculty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edit_faculty_KeyPress);
             // 
             // edit_record
             // 
@@ -611,6 +655,7 @@
             this.edit_record.Name = "edit_record";
             this.edit_record.Size = new System.Drawing.Size(229, 22);
             this.edit_record.TabIndex = 19;
+            this.edit_record.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edit_record_KeyPress);
             // 
             // label9
             // 
@@ -627,6 +672,7 @@
             this.edit_name.Name = "edit_name";
             this.edit_name.Size = new System.Drawing.Size(229, 22);
             this.edit_name.TabIndex = 17;
+            this.edit_name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edit_name_KeyPress);
             // 
             // tabPageSearch
             // 
@@ -840,24 +886,6 @@
             // 
             this.saveFileDialog1.DefaultExt = "txt";
             // 
-            // edit_mark
-            // 
-            this.edit_mark.Location = new System.Drawing.Point(571, 165);
-            this.edit_mark.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.edit_mark.Name = "edit_mark";
-            this.edit_mark.Size = new System.Drawing.Size(226, 22);
-            this.edit_mark.TabIndex = 51;
-            this.edit_mark.ThousandsSeparator = true;
-            this.edit_mark.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -876,6 +904,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPageEdit.ResumeLayout(false);
             this.tabPageEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.edit_mark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.choose_subject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edit_course)).EndInit();
             this.tabPageSearch.ResumeLayout(false);
@@ -883,7 +912,6 @@
             this.tabPage5.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.edit_mark)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

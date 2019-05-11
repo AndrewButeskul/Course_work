@@ -336,9 +336,71 @@ namespace Coursework
             }
         }
 
-        //private void textBox_name_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if ((e.KeyChar >= 'А') & (e.KeyChar <= 'я')) e.Handled = true;
-        //}
+        //-------------------------------Checks----------------------------------------
+        void Check_input_text(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('\b')) return;
+            if (e.KeyChar.Equals(' ')) return;
+
+            var tb = (TextBox)sender;
+            if (e.KeyChar.Equals('-'))
+            {
+                e.Handled = tb.SelectionStart == 0 || tb.Text[tb.SelectionStart - 1].Equals('-');
+                if (!e.Handled)
+                {
+                    return;
+                }
+            }
+            e.Handled = !char.IsLetter(e.KeyChar);
+        }
+        void Check_input_digit(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('\b')) return;
+            e.Handled = !char.IsDigit(e.KeyChar);
+            if (!(Char.IsDigit(e.KeyChar)))
+            {
+                if (e.KeyChar != (char)Keys.Back)
+                    e.Handled = true;
+            }
+        }
+        private void textBox_name_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            Check_input_text(sender, e);
+        }
+
+        private void edit_name_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Check_input_text(sender, e);
+        }
+
+        private void edit_teacher_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Check_input_text(sender, e);
+        }
+
+        private void edit_subject_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Check_input_text(sender, e);
+        }
+
+        private void textBox_faculty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Check_input_text(sender, e);
+        }
+
+        private void edit_faculty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Check_input_text(sender, e);
+        }
+
+        private void edit_record_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Check_input_digit(sender, e);
+        }
+
+        private void textBox_record_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Check_input_digit(sender, e);
+        }
     }
 }
