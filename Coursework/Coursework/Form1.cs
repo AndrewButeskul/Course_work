@@ -17,7 +17,8 @@ namespace Coursework
         Study[] study;
         Input_study input = new Input_study();
         int index_search = 0;
-        public Form1()
+        bool dup = false;
+        public Form1()  
         {
             student = new Student();
             study = new Study[5];
@@ -50,14 +51,14 @@ namespace Coursework
         
         private void button_grid_Click(object sender, EventArgs e)
         {
-            richText.Text = "";
+            richText.Text += "History of operation:\n";
             dataGridView.Rows.Add(textBox_name.Text, textBox_record.Text, textBox_faculty.Text, numeric_course.Value,
                input.study[0].Subject, input.study[0].Name_teacher, input.study[0].Mark,
                input.study[1].Subject, input.study[1].Name_teacher, input.study[1].Mark,
                input.study[2].Subject, input.study[2].Name_teacher, input.study[2].Mark,
                input.study[3].Subject, input.study[3].Name_teacher, input.study[3].Mark,
                input.study[4].Subject, input.study[4].Name_teacher, input.study[4].Mark);            
-            richText.Text += "Your data add in the table, for view to came DataGrid\n";            
+            richText.Text += "Student added to database\n";            
         }
 
         private void button_password_Click_1(object sender, EventArgs e)
@@ -65,7 +66,8 @@ namespace Coursework
             int pin;
             Random rand = new Random();
             pin = rand.Next(9999);
-            textBox_password.Text = Convert.ToString(pin);           
+            textBox_password.Text = Convert.ToString(pin);
+            richText.Text += "Password was generated: " + textBox_password.Text + "\n";
         }
 
         private void button_thebest_Click(object sender, EventArgs e)
@@ -73,7 +75,7 @@ namespace Coursework
             richTextInformation.Text = "The best Students:\n";
             int N = dataGridView.RowCount;
             double[] average_mark = new double[N];
-            int k = 6;
+            int k = 6, count = 0;
             for (int i = 0; i < N; i++)
             {
                 k = 6;
@@ -86,8 +88,11 @@ namespace Coursework
                 if (average_mark[i] >= 4)
                     richTextInformation.Text += dataGridView.Rows[i].Cells[0].Value.ToString() + "\n";
                 else
-                    richTextBox_search.Text = "Not found, such students\n";
+                    count++;
             }
+            if(count == N)
+                richTextInformation.Text += "Not found, such students\n";
+            richText.Text += "The best students were input\n";
         }
 
         private void button_dupes_Click(object sender, EventArgs e)
@@ -95,7 +100,7 @@ namespace Coursework
             richTextInformation.Text = "Students dupes:\n";
             int N = dataGridView.RowCount;
             double[] average_mark = new double[N];
-            int k = 6;
+            int k = 6, count = 0;
             for (int i = 0; i < N; i++)
             {
                 k = 6;
@@ -108,8 +113,11 @@ namespace Coursework
                 if (average_mark[i] < 3)
                     richTextInformation.Text += dataGridView.Rows[i].Cells[0].Value.ToString() + "\n";
                 else
-                    richTextBox_search.Text = "Not found, such students\n";
+                    count++;
             }
+            if (count == N)
+                richTextBox_search.Text = "Not found, such students\n";
+            richText.Text += "The losers were input\n";
         }
 
         private void button_search_Click(object sender, EventArgs e)
@@ -133,6 +141,7 @@ namespace Coursework
             }
             if(count == 0)                 
                 richTextBox_search.Text = "Not found, such student\n";
+            richText.Text += dataGridView.Rows[index_search].Cells[0].Value.ToString() + "was found\n";
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -160,7 +169,7 @@ namespace Coursework
             }
             dataGridView.Rows.RemoveAt(dataGridView.RowCount - 1);
             MessageBox.Show("File opened");
-            richText.Text = "\nYou was opening data from file";
+            richText.Text = "Your data from File were opened\n";
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -179,7 +188,7 @@ namespace Coursework
             }
             writer.Close();
             MessageBox.Show("File saved");
-            richText.Text = "\nYou was adding data to the DataGrid";
+            richText.Text = "\nYour data were saved to File";
         }
 
         private void aboutTheProgramToolStripMenuItem_Click(object sender, EventArgs e)
@@ -191,50 +200,66 @@ namespace Coursework
         private void button_discipline_Click(object sender, EventArgs e)
         {
             richTextInformation.Text = "Discipline on which the greatest number of students received twos\n";
-            int[] count = new int[5];
-            int temp = 0;
-            int max = count[0], k = 4;
-            bool check = true;
-            //int count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0;
+            int k = 0, p = 0, n, s = 0, check_on_check = 0, Count = 0;
+            n = dataGridView.RowCount * 5;
+            string[] dicipline = new string[n];
+            int[] count = new int[n];
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
-                if (Convert.ToInt32(dataGridView.Rows[i].Cells[6].Value) == 2)
-                    count[0]++;
-                else if (Convert.ToInt32(dataGridView.Rows[i].Cells[9].Value) == 2)
-                    count[1]++;
-                else if (Convert.ToInt32(dataGridView.Rows[i].Cells[12].Value) == 2)
-                    count[2]++;
-                else if (Convert.ToInt32(dataGridView.Rows[i].Cells[15].Value) == 2)
-                    count[3]++;
-                else if (Convert.ToInt32(dataGridView.Rows[i].Cells[18].Value) == 2)
-                    count[4]++;
-                else;
-            }
-            if (count[0] + count[1] + count[2] + count[3] + count[4] != 0)
-            {
-                for (int i = 0; i < count.Length; i++)
+                k = 6;
+                p = 4;
+                for (int j = 0; j < 5; j++)
                 {
-                    if (count[i] > max)
+                    if (Convert.ToInt32(dataGridView.Rows[i].Cells[k].Value) == 2)
                     {
-                        max = count[i];
-                        temp = i;
-                    }
-                }
-
-                for (int j = 0; j < count.Length; j++)
-                {
-                    if (temp == j)
-                    {
-                        richTextInformation.Text += dataGridView.Rows[temp].Cells[k].Value.ToString();
+                        Count++;
+                        check_on_check = 0;
+                        if (s == 0)
+                        {
+                            dicipline[s] = dataGridView.Rows[i].Cells[p].Value.ToString();
+                            count[s]++;
+                            k += 3;
+                            p += 3;
+                            s++;
+                            continue;
+                        }
+                        for (int l = 0; l < s; l++)
+                        {
+                            if (dataGridView.Rows[i].Cells[p].Value.ToString() == dicipline[l])
+                            {
+                                count[l]++;
+                                check_on_check++;
+                                break;
+                            }
+                        }
+                        if (check_on_check == 0)
+                        {
+                            dicipline[s] = dataGridView.Rows[i].Cells[p].Value.ToString();
+                            count[s]++;
+                            s++;
+                        }
                     }
                     k += 3;
+                    p += 3;
                 }
-
             }
+            int max = count[0];
+            for (int i = 0; i < s; i++)
+            {
+                if (count[i] >= max)
+                {
+                    max = count[i];
+                    p = i;
+                }
+            }
+            if (Count == 0)
+                richTextInformation.Text = "Not found, each diciplines";
             else
-                richTextInformation.Text = "Not found!";
-        }
+                richTextInformation.Text += dicipline[p];
+            richText.Text += "The subject was found, on which more twos\n";
 
+        }
+                
         private void button_check_password_Click(object sender, EventArgs e)
         {
             if (textBox_check_password.Text == textBox_password.Text)
@@ -255,6 +280,8 @@ namespace Coursework
         {
             dataGridView.Rows.RemoveAt(index_search);
             MessageBox.Show("All data about student, deleted successfully");
+            richText.Text += "The student " + dataGridView.Rows[index_search].Cells[0].Value.ToString() + 
+                " was deleted from database\n";
         }
 
         private void button_choose_subject_Click(object sender, EventArgs e)
@@ -297,8 +324,7 @@ namespace Coursework
             dataGridView.Rows[index_search].Cells[0].Value = edit_name.Text;
             dataGridView.Rows[index_search].Cells[1].Value = edit_record.Text;
             dataGridView.Rows[index_search].Cells[2].Value = edit_faculty.Text;
-            dataGridView.Rows[index_search].Cells[3].Value = edit_course.Value;
-            dataGridView.Refresh();
+            dataGridView.Rows[index_search].Cells[3].Value = edit_course.Value;            
         }
 
         private void button_change_progress_Click(object sender, EventArgs e)
@@ -332,8 +358,36 @@ namespace Coursework
                     dataGridView.Rows[index_search].Cells[18].Value = edit_mark.Value;
                     break;
                 default:
-                    break;
+                    break;                      
             }
+        }
+
+        private void save_changes_Click(object sender, EventArgs e)
+        {
+            dataGridView.Refresh();
+            MessageBox.Show("Entered data saved");
+            richText.Text += "Database was edited";
+        }
+        
+        private void remove_losers_Click(object sender, EventArgs e)
+        {
+            int k = 0, count = 0;
+            for (int i = 0; i < dataGridView.RowCount; i++)
+            {
+                k = 6;
+                for (int j = 0; j < 5; j++)
+                {
+                    if (Convert.ToInt32(dataGridView.Rows[i].Cells[k].Value) == 2)
+                    {
+                        dataGridView.Rows.RemoveAt(i);
+                        break;
+                    }
+                    k += 3;
+                }
+            }
+            dataGridView.Refresh();
+            MessageBox.Show("Data removed");
+            richText.Text += "Data on students who have had deuces removed";
         }
 
         //-------------------------------Checks----------------------------------------
@@ -402,5 +456,13 @@ namespace Coursework
         {
             Check_input_digit(sender, e);
         }
+
+        
+        private void Form1_HelpRequested_1(object sender, HelpEventArgs hlpevent)
+        {
+            //Help.ShowHelp(this, "help.chm");
+            MessageBox.Show("jn");
+        }
+
     }
 }
