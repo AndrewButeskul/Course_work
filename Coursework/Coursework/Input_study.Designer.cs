@@ -41,17 +41,18 @@
             // 
             // button_add_progress
             // 
+            this.button_add_progress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_add_progress.Location = new System.Drawing.Point(36, 146);
             this.button_add_progress.Name = "button_add_progress";
-            this.button_add_progress.Size = new System.Drawing.Size(121, 30);
+            this.button_add_progress.Size = new System.Drawing.Size(131, 44);
             this.button_add_progress.TabIndex = 37;
-            this.button_add_progress.Text = "Add Progress";
+            this.button_add_progress.Text = "Add Subject";
             this.button_add_progress.UseVisualStyleBackColor = true;
             this.button_add_progress.Click += new System.EventHandler(this.button_add_progress_Click);
             // 
             // numeric_mark1
             // 
-            this.numeric_mark1.Location = new System.Drawing.Point(154, 101);
+            this.numeric_mark1.Location = new System.Drawing.Point(194, 101);
             this.numeric_mark1.Maximum = new decimal(new int[] {
             5,
             0,
@@ -67,32 +68,34 @@
             this.numeric_mark1.TabIndex = 36;
             this.numeric_mark1.ThousandsSeparator = true;
             this.numeric_mark1.Value = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
-            65536});
+            0});
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.Location = new System.Drawing.Point(33, 103);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 17);
+            this.label7.Size = new System.Drawing.Size(121, 20);
             this.label7.TabIndex = 35;
             this.label7.Text = "Average marks";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.Location = new System.Drawing.Point(33, 64);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 17);
+            this.label6.Size = new System.Drawing.Size(79, 20);
             this.label6.TabIndex = 34;
             this.label6.Text = "Teachers";
             // 
             // textBox_teacher1
             // 
-            this.textBox_teacher1.Location = new System.Drawing.Point(154, 61);
+            this.textBox_teacher1.Location = new System.Drawing.Point(194, 61);
             this.textBox_teacher1.Name = "textBox_teacher1";
             this.textBox_teacher1.Size = new System.Drawing.Size(193, 22);
             this.textBox_teacher1.TabIndex = 33;
@@ -101,15 +104,16 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(33, 26);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 17);
+            this.label5.Size = new System.Drawing.Size(74, 20);
             this.label5.TabIndex = 32;
             this.label5.Text = "Subjects";
             // 
             // textBox_subject1
             // 
-            this.textBox_subject1.Location = new System.Drawing.Point(154, 23);
+            this.textBox_subject1.Location = new System.Drawing.Point(194, 23);
             this.textBox_subject1.Name = "textBox_subject1";
             this.textBox_subject1.Size = new System.Drawing.Size(193, 22);
             this.textBox_subject1.TabIndex = 31;
@@ -117,9 +121,10 @@
             // 
             // button_Cancel
             // 
+            this.button_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_Cancel.Location = new System.Drawing.Point(226, 146);
             this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(121, 30);
+            this.button_Cancel.Size = new System.Drawing.Size(126, 44);
             this.button_Cancel.TabIndex = 38;
             this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
@@ -129,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 202);
+            this.ClientSize = new System.Drawing.Size(421, 202);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_add_progress);
             this.Controls.Add(this.numeric_mark1);

@@ -12,7 +12,7 @@ namespace Coursework
 {
     public partial class Input_study : Form
     {
-        int count = 0;
+        public int count = 0, check_enabled = 0;
         internal Study[] study;
         public Input_study()
         {
@@ -22,24 +22,23 @@ namespace Coursework
                 study[i] = new Study();
             }
             InitializeComponent();
+            check_enabled = 0;
             textBox_subject1.Text = "Math";
             textBox_teacher1.Text = "Vladimir Sidorov";
         }
         private void button_add_progress_Click(object sender, EventArgs e)
         {
-            //for (int i = 0; i < 5; i++)
-            //{
             if (count >= 5)
                 count = 0;
                 study[count].Subject = textBox_subject1.Text;
                 study[count].Name_teacher = textBox_teacher1.Text;
                 study[count].Mark = Convert.ToDouble(numeric_mark1.Value);
-                count++;
-            //}            
+                count++;                        
             Close();
         }
         private void button_Cancel_Click(object sender, EventArgs e)
         {
+            check_enabled = 1;
             Close();
         }
 
