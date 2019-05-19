@@ -104,7 +104,8 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutTheProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openXlsxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveInXlsxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -127,6 +128,7 @@
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Name_student,
@@ -151,112 +153,132 @@
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(3, 3);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(959, 418);
+            this.dataGridView.Size = new System.Drawing.Size(983, 418);
             this.dataGridView.TabIndex = 0;
             // 
             // Name_student
             // 
             this.Name_student.HeaderText = "Name";
             this.Name_student.Name = "Name_student";
+            this.Name_student.ReadOnly = true;
             this.Name_student.Width = 120;
             // 
             // Record_number
             // 
             this.Record_number.HeaderText = "Record Number";
             this.Record_number.Name = "Record_number";
+            this.Record_number.ReadOnly = true;
             this.Record_number.Width = 50;
             // 
             // name_faculty
             // 
             this.name_faculty.HeaderText = "Name Faculty";
             this.name_faculty.Name = "name_faculty";
+            this.name_faculty.ReadOnly = true;
             // 
             // number_course
             // 
             this.number_course.HeaderText = "Course ";
             this.number_course.Name = "number_course";
+            this.number_course.ReadOnly = true;
             this.number_course.Width = 50;
             // 
             // subject1
             // 
             this.subject1.HeaderText = "Subject 1";
             this.subject1.Name = "subject1";
+            this.subject1.ReadOnly = true;
             // 
             // Teacher1
             // 
             this.Teacher1.HeaderText = "Teacher";
             this.Teacher1.Name = "Teacher1";
+            this.Teacher1.ReadOnly = true;
             // 
             // Mark1
             // 
             this.Mark1.HeaderText = "Mark";
             this.Mark1.Name = "Mark1";
-            this.Mark1.Width = 40;
+            this.Mark1.ReadOnly = true;
+            this.Mark1.Width = 35;
             // 
             // Subject2
             // 
             this.Subject2.HeaderText = "Subject 2";
             this.Subject2.Name = "Subject2";
+            this.Subject2.ReadOnly = true;
             // 
             // Teacher2
             // 
             this.Teacher2.HeaderText = "Teacher";
             this.Teacher2.Name = "Teacher2";
+            this.Teacher2.ReadOnly = true;
             // 
             // Mark2
             // 
             this.Mark2.HeaderText = "Mark";
             this.Mark2.Name = "Mark2";
-            this.Mark2.Width = 40;
+            this.Mark2.ReadOnly = true;
+            this.Mark2.Width = 35;
             // 
             // Subject3
             // 
             this.Subject3.HeaderText = "Subject 3";
             this.Subject3.Name = "Subject3";
+            this.Subject3.ReadOnly = true;
             // 
             // Teacher3
             // 
             this.Teacher3.HeaderText = "Teacher";
             this.Teacher3.Name = "Teacher3";
+            this.Teacher3.ReadOnly = true;
             // 
             // Mark3
             // 
             this.Mark3.HeaderText = "Mark";
             this.Mark3.Name = "Mark3";
-            this.Mark3.Width = 40;
+            this.Mark3.ReadOnly = true;
+            this.Mark3.Width = 35;
             // 
             // Subject4
             // 
             this.Subject4.HeaderText = "Subject 4";
             this.Subject4.Name = "Subject4";
+            this.Subject4.ReadOnly = true;
             // 
             // Teacher4
             // 
             this.Teacher4.HeaderText = "Teacher";
             this.Teacher4.Name = "Teacher4";
+            this.Teacher4.ReadOnly = true;
             // 
             // Mark4
             // 
             this.Mark4.HeaderText = "Mark";
             this.Mark4.Name = "Mark4";
-            this.Mark4.Width = 40;
+            this.Mark4.ReadOnly = true;
+            this.Mark4.Width = 35;
             // 
             // Subject5
             // 
             this.Subject5.HeaderText = "Subject 5";
             this.Subject5.Name = "Subject5";
+            this.Subject5.ReadOnly = true;
             // 
             // Teacher5
             // 
             this.Teacher5.HeaderText = "Teacher";
             this.Teacher5.Name = "Teacher5";
+            this.Teacher5.ReadOnly = true;
             // 
             // Mark5
             // 
             this.Mark5.HeaderText = "Mark";
             this.Mark5.Name = "Mark5";
-            this.Mark5.Width = 40;
+            this.Mark5.ReadOnly = true;
+            this.Mark5.Width = 35;
             // 
             // Menu
             // 
@@ -269,7 +291,7 @@
             this.Menu.Location = new System.Drawing.Point(0, 28);
             this.Menu.Name = "Menu";
             this.Menu.SelectedIndex = 0;
-            this.Menu.Size = new System.Drawing.Size(973, 453);
+            this.Menu.Size = new System.Drawing.Size(997, 453);
             this.Menu.TabIndex = 1;
             // 
             // tabPageCreate
@@ -291,7 +313,7 @@
             this.tabPageCreate.Location = new System.Drawing.Point(4, 25);
             this.tabPageCreate.Name = "tabPageCreate";
             this.tabPageCreate.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCreate.Size = new System.Drawing.Size(965, 424);
+            this.tabPageCreate.Size = new System.Drawing.Size(989, 424);
             this.tabPageCreate.TabIndex = 0;
             this.tabPageCreate.Text = "Create";
             // 
@@ -316,8 +338,10 @@
             // 
             // richText
             // 
+            this.richText.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.richText.Location = new System.Drawing.Point(435, 42);
             this.richText.Name = "richText";
+            this.richText.ReadOnly = true;
             this.richText.Size = new System.Drawing.Size(494, 304);
             this.richText.TabIndex = 32;
             this.richText.Text = "";
@@ -392,6 +416,7 @@
             this.textBox_faculty.Name = "textBox_faculty";
             this.textBox_faculty.Size = new System.Drawing.Size(193, 22);
             this.textBox_faculty.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.textBox_faculty, "Example: ИКС");
             this.textBox_faculty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_faculty_KeyPress);
             // 
             // textBox_record
@@ -400,6 +425,7 @@
             this.textBox_record.Name = "textBox_record";
             this.textBox_record.Size = new System.Drawing.Size(193, 22);
             this.textBox_record.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.textBox_record, "Example: 12");
             this.textBox_record.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_record_KeyPress);
             // 
             // label1
@@ -418,6 +444,7 @@
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(193, 22);
             this.textBox_name.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.textBox_name, "Example: Носов Станислав ");
             this.textBox_name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_name_KeyPress_1);
             // 
             // tabPage2
@@ -427,7 +454,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(965, 424);
+            this.tabPage2.Size = new System.Drawing.Size(989, 424);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "View data";
             // 
@@ -457,7 +484,7 @@
             this.tabPageEdit.Location = new System.Drawing.Point(4, 25);
             this.tabPageEdit.Name = "tabPageEdit";
             this.tabPageEdit.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEdit.Size = new System.Drawing.Size(965, 424);
+            this.tabPageEdit.Size = new System.Drawing.Size(989, 424);
             this.tabPageEdit.TabIndex = 2;
             this.tabPageEdit.Text = "Edit";
             // 
@@ -708,7 +735,7 @@
             this.tabPageSearch.Location = new System.Drawing.Point(4, 25);
             this.tabPageSearch.Name = "tabPageSearch";
             this.tabPageSearch.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSearch.Size = new System.Drawing.Size(965, 424);
+            this.tabPageSearch.Size = new System.Drawing.Size(989, 424);
             this.tabPageSearch.TabIndex = 3;
             this.tabPageSearch.Text = "Search";
             // 
@@ -766,8 +793,10 @@
             // 
             // richTextBox_search
             // 
+            this.richTextBox_search.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.richTextBox_search.Location = new System.Drawing.Point(28, 115);
             this.richTextBox_search.Name = "richTextBox_search";
+            this.richTextBox_search.ReadOnly = true;
             this.richTextBox_search.Size = new System.Drawing.Size(505, 301);
             this.richTextBox_search.TabIndex = 3;
             this.richTextBox_search.Text = "";
@@ -788,7 +817,7 @@
             // 
             this.textBox_search.Location = new System.Drawing.Point(440, 23);
             this.textBox_search.Name = "textBox_search";
-            this.textBox_search.Size = new System.Drawing.Size(93, 22);
+            this.textBox_search.Size = new System.Drawing.Size(99, 22);
             this.textBox_search.TabIndex = 1;
             // 
             // label5
@@ -808,7 +837,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(965, 424);
+            this.tabPage5.Size = new System.Drawing.Size(989, 424);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Tasks";
             // 
@@ -828,7 +857,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(959, 418);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(983, 418);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // remove_losers
@@ -838,7 +867,7 @@
             this.remove_losers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.remove_losers.Location = new System.Drawing.Point(3, 315);
             this.remove_losers.Name = "remove_losers";
-            this.remove_losers.Size = new System.Drawing.Size(953, 100);
+            this.remove_losers.Size = new System.Drawing.Size(977, 100);
             this.remove_losers.TabIndex = 4;
             this.remove_losers.Text = "Remove students who have at least one deuce";
             this.remove_losers.UseVisualStyleBackColor = true;
@@ -851,7 +880,7 @@
             this.button_thebest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_thebest.Location = new System.Drawing.Point(3, 107);
             this.button_thebest.Name = "button_thebest";
-            this.button_thebest.Size = new System.Drawing.Size(953, 98);
+            this.button_thebest.Size = new System.Drawing.Size(977, 98);
             this.button_thebest.TabIndex = 1;
             this.button_thebest.Text = "See the best students ";
             this.button_thebest.UseVisualStyleBackColor = true;
@@ -864,7 +893,7 @@
             this.button_dupes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_dupes.Location = new System.Drawing.Point(3, 211);
             this.button_dupes.Name = "button_dupes";
-            this.button_dupes.Size = new System.Drawing.Size(953, 98);
+            this.button_dupes.Size = new System.Drawing.Size(977, 98);
             this.button_dupes.TabIndex = 2;
             this.button_dupes.Text = "View dupes";
             this.button_dupes.UseVisualStyleBackColor = true;
@@ -877,7 +906,7 @@
             this.button_discipline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_discipline.Location = new System.Drawing.Point(3, 3);
             this.button_discipline.Name = "button_discipline";
-            this.button_discipline.Size = new System.Drawing.Size(953, 98);
+            this.button_discipline.Size = new System.Drawing.Size(977, 98);
             this.button_discipline.TabIndex = 3;
             this.button_discipline.Text = "Discipline on which more twos";
             this.button_discipline.UseVisualStyleBackColor = true;
@@ -888,11 +917,10 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.aboutTheProgramToolStripMenuItem,
             this.referenceToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(973, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(997, 28);
             this.menuStrip1.TabIndex = 29;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -900,7 +928,9 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.openXlsxToolStripMenuItem,
+            this.saveInXlsxToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
@@ -908,24 +938,31 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
-            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.openToolStripMenuItem.Text = "Open txt";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
-            this.saveToolStripMenuItem.Text = "Save ";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.saveToolStripMenuItem.Text = "Save in txt";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
-            // aboutTheProgramToolStripMenuItem
+            // openXlsxToolStripMenuItem
             // 
-            this.aboutTheProgramToolStripMenuItem.Name = "aboutTheProgramToolStripMenuItem";
-            this.aboutTheProgramToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
-            this.aboutTheProgramToolStripMenuItem.Text = "About the program";
-            this.aboutTheProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutTheProgramToolStripMenuItem_Click);
+            this.openXlsxToolStripMenuItem.Name = "openXlsxToolStripMenuItem";
+            this.openXlsxToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.openXlsxToolStripMenuItem.Text = "Open xls";
+            this.openXlsxToolStripMenuItem.Click += new System.EventHandler(this.openXlsxToolStripMenuItem_Click);
+            // 
+            // saveInXlsxToolStripMenuItem
+            // 
+            this.saveInXlsxToolStripMenuItem.Name = "saveInXlsxToolStripMenuItem";
+            this.saveInXlsxToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.saveInXlsxToolStripMenuItem.Text = "Save in xls";
+            this.saveInXlsxToolStripMenuItem.Click += new System.EventHandler(this.saveInXlsxToolStripMenuItem_Click);
             // 
             // referenceToolStripMenuItem
             // 
@@ -946,12 +983,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 481);
+            this.ClientSize = new System.Drawing.Size(997, 481);
             this.Controls.Add(this.Menu);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Database students";
+            this.Text = "Student Database";
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.Form1_HelpRequested_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.Menu.ResumeLayout(false);
@@ -990,25 +1027,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button_add;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name_student;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Record_number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name_faculty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn number_course;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subject1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Teacher1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mark1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Subject2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Teacher2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mark2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Subject3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Teacher3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mark3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Subject4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Teacher4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mark4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Subject5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Teacher5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mark5;
         private System.Windows.Forms.NumericUpDown numeric_course;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -1037,7 +1055,6 @@
         private System.Windows.Forms.Button button_discipline;
         private System.Windows.Forms.Button button_dupes;
         private System.Windows.Forms.Button button_thebest;
-        private System.Windows.Forms.ToolStripMenuItem aboutTheProgramToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
@@ -1057,6 +1074,27 @@
         private System.Windows.Forms.Button remove_losers;
         public System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_student;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Record_number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name_faculty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number_course;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subject1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Teacher1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mark1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Subject2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Teacher2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mark2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Subject3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Teacher3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mark3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Subject4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Teacher4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mark4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Subject5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Teacher5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mark5;
+        private System.Windows.Forms.ToolStripMenuItem openXlsxToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveInXlsxToolStripMenuItem;
     }
 }
 

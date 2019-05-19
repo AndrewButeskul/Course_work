@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button_add_progress = new System.Windows.Forms.Button();
             this.numeric_mark1 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
@@ -36,13 +37,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox_subject1 = new System.Windows.Forms.TextBox();
             this.button_Cancel = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numeric_mark1)).BeginInit();
             this.SuspendLayout();
             // 
             // button_add_progress
             // 
             this.button_add_progress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_add_progress.Location = new System.Drawing.Point(36, 146);
+            this.button_add_progress.Location = new System.Drawing.Point(53, 146);
             this.button_add_progress.Name = "button_add_progress";
             this.button_add_progress.Size = new System.Drawing.Size(131, 44);
             this.button_add_progress.TabIndex = 37;
@@ -64,7 +66,7 @@
             0,
             0});
             this.numeric_mark1.Name = "numeric_mark1";
-            this.numeric_mark1.Size = new System.Drawing.Size(193, 22);
+            this.numeric_mark1.Size = new System.Drawing.Size(222, 22);
             this.numeric_mark1.TabIndex = 36;
             this.numeric_mark1.ThousandsSeparator = true;
             this.numeric_mark1.Value = new decimal(new int[] {
@@ -97,8 +99,9 @@
             // 
             this.textBox_teacher1.Location = new System.Drawing.Point(194, 61);
             this.textBox_teacher1.Name = "textBox_teacher1";
-            this.textBox_teacher1.Size = new System.Drawing.Size(193, 22);
+            this.textBox_teacher1.Size = new System.Drawing.Size(222, 22);
             this.textBox_teacher1.TabIndex = 33;
+            this.toolTip1.SetToolTip(this.textBox_teacher1, "Example: Petro Sidorov");
             this.textBox_teacher1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_teacher1_KeyPress);
             // 
             // label5
@@ -115,14 +118,15 @@
             // 
             this.textBox_subject1.Location = new System.Drawing.Point(194, 23);
             this.textBox_subject1.Name = "textBox_subject1";
-            this.textBox_subject1.Size = new System.Drawing.Size(193, 22);
+            this.textBox_subject1.Size = new System.Drawing.Size(222, 22);
             this.textBox_subject1.TabIndex = 31;
+            this.toolTip1.SetToolTip(this.textBox_subject1, "Example: Math");
             this.textBox_subject1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_subject1_KeyPress);
             // 
             // button_Cancel
             // 
             this.button_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Cancel.Location = new System.Drawing.Point(226, 146);
+            this.button_Cancel.Location = new System.Drawing.Point(251, 146);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(126, 44);
             this.button_Cancel.TabIndex = 38;
@@ -134,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 202);
+            this.ClientSize = new System.Drawing.Size(447, 202);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_add_progress);
             this.Controls.Add(this.numeric_mark1);
@@ -161,5 +165,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox_subject1;
         private System.Windows.Forms.Button button_Cancel;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

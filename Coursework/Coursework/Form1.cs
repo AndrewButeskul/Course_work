@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Data.OleDb;
 
 namespace Coursework
 {
@@ -183,7 +185,7 @@ namespace Coursework
                     count++;
             }
             if (count == N)
-                richTextBox_search.Text = "Not found, such students\n";
+                MessageBox.Show("Not found, such students\n");
             else
             {
                 for (int i = 0; i < count_stud; i++)
@@ -254,7 +256,7 @@ namespace Coursework
             dataGridView.Rows.RemoveAt(dataGridView.RowCount - 1);
             MessageBox.Show("File opened");
             Button_true();
-            richText.Text = "Your data from File were opened\n";
+            richText.Text += "Your data from File were opened\n";
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -273,13 +275,7 @@ namespace Coursework
             }
             writer.Close();
             MessageBox.Show("File saved");
-            richText.Text = "\nYour data were saved to File";
-        }
-
-        private void aboutTheProgramToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Данная программа представляет собой Базу данных студентов.\n" +
-                "О разработчике:\nСтудент: Андрей Бутескул\nФакультет: ИКС\nГруппа: АТ-182\n");
+            richText.Text += "\nYour data were saved to File";
         }
 
         private void button_discipline_Click(object sender, EventArgs e)
@@ -479,6 +475,79 @@ namespace Coursework
             richText.Text += "Data on students who have had deuces removed";
         }
 
+        private void saveInXlsxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Excel.Application excelapp = new Excel.Application();
+            Excel.Workbook workbook = excelapp.Workbooks.Add();
+            Excel.Worksheet worksheet = workbook.ActiveSheet;
+            excelapp.Visible = false;
+
+            //Preparing to export user password
+            for (int i = 0; i < dataGridView.RowCount; i++)
+            {
+                for (int j = 0; j < dataGridView.ColumnCount; j++)
+                {
+                    worksheet.Rows[i + 1].Columns[j + 1] = dataGridView.Rows[i].Cells[j].Value;
+                }
+            }
+
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel (*.xls)|*.xls";
+
+            //Saving!
+            string path = null;
+            saveDialog.ShowDialog();
+            path = saveDialog.FileName;
+            richText.Text += "File succesfully saved to " + path;
+            excelapp.AlertBeforeOverwriting = false;
+            workbook.SaveAs(path, ReadOnlyRecommended: true);
+            excelapp.Quit();
+
+        }
+
+        private void openXlsxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                dataGridView.Rows.RemoveAt(i);
+            }
+            OpenFileDialog opf = new OpenFileDialog();
+            opf.Filter = "Excel (*.XLS)|*.XLS ";
+
+            if (opf.ShowDialog() == DialogResult.OK)
+            {
+                DataTable tb = new DataTable();
+                string filename = opf.FileName;
+                Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel._Workbook ExcelWorkBook;
+                Microsoft.Office.Interop.Excel.Worksheet ExcelWorkSheet;
+
+                //Opening
+                ExcelWorkBook = ExcelApp.Workbooks.Open(filename, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows,
+                    "\t", false, false, 0, true, 1, 0);
+
+                ExcelWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelWorkBook.Worksheets.get_Item(1);
+                for (int i = 1; i <= ExcelApp.Rows.Count; i++)
+                {
+                    if (ExcelApp.Cells[i, 1].Value != null)
+                    {
+                        //Importing our data to DBPreView
+                        dataGridView.Rows.Add(ExcelApp.Cells[i, 1].Value, ExcelApp.Cells[i, 2].Value, ExcelApp.Cells[i, 3].Value,
+                            ExcelApp.Cells[i, 4].Value, ExcelApp.Cells[i, 5].Value, ExcelApp.Cells[i, 6].Value, ExcelApp.Cells[i, 7].Value,
+                            ExcelApp.Cells[i, 8].Value, ExcelApp.Cells[i, 9].Value, ExcelApp.Cells[i, 10].Value, ExcelApp.Cells[i, 11].Value,
+                            ExcelApp.Cells[i, 12].Value, ExcelApp.Cells[i, 13].Value, ExcelApp.Cells[i, 14].Value, ExcelApp.Cells[i, 15].Value,
+                            ExcelApp.Cells[i, 16].Value, ExcelApp.Cells[i, 17].Value, ExcelApp.Cells[i, 18].Value, ExcelApp.Cells[i, 19].Value);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                richText.Text = "Data importing finished succesful\n Now in DBPreView you can see data from " + filename;
+                ExcelApp.Quit();
+            }
+        }
+
         //-------------------------------Checks----------------------------------------
         void Check_input_text(object sender, KeyPressEventArgs e)
         {
@@ -545,8 +614,9 @@ namespace Coursework
         {
             Check_input_digit(sender, e);
         }
-        //----------------------------------------------------------------------------
         
+        //----------------------------------------------------------------------------
+
         private void Form1_HelpRequested_1(object sender, HelpEventArgs hlpevent)
         {
             //Help.ShowHelp(this, "help.chm");
