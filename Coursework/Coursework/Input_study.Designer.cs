@@ -101,7 +101,7 @@
             this.textBox_teacher1.Name = "textBox_teacher1";
             this.textBox_teacher1.Size = new System.Drawing.Size(222, 22);
             this.textBox_teacher1.TabIndex = 33;
-            this.toolTip1.SetToolTip(this.textBox_teacher1, "Example: Petro Sidorov");
+            this.toolTip1.SetToolTip(this.textBox_teacher1, "Example: Журавлёв Викентий Леонидович");
             this.textBox_teacher1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_teacher1_KeyPress);
             // 
             // label5
@@ -120,7 +120,7 @@
             this.textBox_subject1.Name = "textBox_subject1";
             this.textBox_subject1.Size = new System.Drawing.Size(222, 22);
             this.textBox_subject1.TabIndex = 31;
-            this.toolTip1.SetToolTip(this.textBox_subject1, "Example: Math");
+            this.toolTip1.SetToolTip(this.textBox_subject1, "Example: Математика");
             this.textBox_subject1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_subject1_KeyPress);
             // 
             // button_Cancel
