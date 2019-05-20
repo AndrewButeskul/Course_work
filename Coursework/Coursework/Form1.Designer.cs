@@ -105,7 +105,7 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openXlsxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveInXlsxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.save_xls = new System.Windows.Forms.ToolStripMenuItem();
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -930,7 +930,7 @@
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.openXlsxToolStripMenuItem,
-            this.saveInXlsxToolStripMenuItem});
+            this.save_xls});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
@@ -938,7 +938,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.openToolStripMenuItem.Text = "Open txt";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -946,29 +946,31 @@
             // 
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.saveToolStripMenuItem.Text = "Save in txt";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // openXlsxToolStripMenuItem
             // 
             this.openXlsxToolStripMenuItem.Name = "openXlsxToolStripMenuItem";
-            this.openXlsxToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.openXlsxToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.openXlsxToolStripMenuItem.Text = "Open xls";
             this.openXlsxToolStripMenuItem.Click += new System.EventHandler(this.openXlsxToolStripMenuItem_Click);
             // 
-            // saveInXlsxToolStripMenuItem
+            // save_xls
             // 
-            this.saveInXlsxToolStripMenuItem.Name = "saveInXlsxToolStripMenuItem";
-            this.saveInXlsxToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.saveInXlsxToolStripMenuItem.Text = "Save in xls";
-            this.saveInXlsxToolStripMenuItem.Click += new System.EventHandler(this.saveInXlsxToolStripMenuItem_Click);
+            this.save_xls.Enabled = false;
+            this.save_xls.Name = "save_xls";
+            this.save_xls.Size = new System.Drawing.Size(152, 26);
+            this.save_xls.Text = "Save in xls";
+            this.save_xls.Click += new System.EventHandler(this.saveInXlsxToolStripMenuItem_Click);
             // 
             // referenceToolStripMenuItem
             // 
             this.referenceToolStripMenuItem.Name = "referenceToolStripMenuItem";
             this.referenceToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
             this.referenceToolStripMenuItem.Text = "Reference";
+            this.referenceToolStripMenuItem.Click += new System.EventHandler(this.referenceToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
@@ -1094,7 +1096,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Teacher5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mark5;
         private System.Windows.Forms.ToolStripMenuItem openXlsxToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveInXlsxToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem save_xls;
     }
 }
 

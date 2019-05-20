@@ -23,8 +23,8 @@ namespace Coursework
             }
             InitializeComponent();
             check_enabled = 0;
-            textBox_subject1.Text = "Math";
-            textBox_teacher1.Text = "Vladimir Sidorov";
+            textBox_subject1.Text = "Програмированние";
+            textBox_teacher1.Text = "Кваша Григорий Иванович";
         }
         private void button_add_progress_Click(object sender, EventArgs e)
         {

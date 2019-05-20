@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Data.OleDb;
+using System.Diagnostics;
 
 namespace Coursework
 {
@@ -33,9 +34,9 @@ namespace Coursework
             InitializeComponent();
 
             //*********Example**********//
-            textBox_name.Text = "Vlad Ivanov";
+            textBox_name.Text = "Влад Иванов";
             textBox_record.Text = "10";
-            textBox_faculty.Text = "ICS";
+            textBox_faculty.Text = "ИКС";
             Menu.TabPages.Remove(tabPageEdit);
             button_check_password.Enabled = false;
             button_Delete.Enabled = false;
@@ -78,6 +79,7 @@ namespace Coursework
             remove_losers.Enabled = true;
             button_search.Enabled = true;
             saveToolStripMenuItem.Enabled = true;
+            save_xls.Enabled = true;
         }
 
         private void button_add_Click(object sender, EventArgs e)
@@ -232,6 +234,13 @@ namespace Coursework
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (dataGridView.RowCount != 0)
+            {
+                for (int i = dataGridView.RowCount - 1; i >= 0; i--)
+                {
+                    dataGridView.Rows.RemoveAt(i);
+                }
+            }
             dataGridView.Rows.Add();
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
@@ -498,7 +507,8 @@ namespace Coursework
             string path = null;
             saveDialog.ShowDialog();
             path = saveDialog.FileName;
-            richText.Text += "File succesfully saved to " + path;
+            richText.Text += "File succesfully saved in xls.";
+            MessageBox.Show("File saved");
             excelapp.AlertBeforeOverwriting = false;
             workbook.SaveAs(path, ReadOnlyRecommended: true);
             excelapp.Quit();
@@ -543,7 +553,8 @@ namespace Coursework
                         break;
                     }
                 }
-                richText.Text = "Data importing finished succesful\n Now in DBPreView you can see data from " + filename;
+                richText.Text = "Data importing finished succesful\n";
+                MessageBox.Show("File opened");
                 ExcelApp.Quit();
             }
         }
@@ -614,13 +625,17 @@ namespace Coursework
         {
             Check_input_digit(sender, e);
         }
-        
+
+        private void referenceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"C:\Users\Andrew Buteskul\Course_work\Coursework\Coursework\Manual.chm");
+        }
+
         //----------------------------------------------------------------------------
 
         private void Form1_HelpRequested_1(object sender, HelpEventArgs hlpevent)
         {
-            //Help.ShowHelp(this, "help.chm");
-            MessageBox.Show("jn");
+            Process.Start(@"C:\Users\Andrew Buteskul\Course_work\Coursework\Coursework\Manual.chm");
         }
 
     }
