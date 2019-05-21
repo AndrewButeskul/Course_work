@@ -92,17 +92,20 @@ namespace Coursework
                 {
                     if (dataGridView.Rows[i].Cells[1].Value.ToString() == textBox_record.Text)
                         count_record++;
-                    //else
-                    //    prov = true;
                 }
-                if (count_record == 0)
+                if (count_record == 0 && textBox_name.Text != "" && textBox_record.Text != "")
                     Input_student();
                 else
                     MessageBox.Show("Each the student already exists.\nRepeat input");
 
             }
-            else           
-                Input_student();            
+            else
+            {
+                if (textBox_name.Text != "" && textBox_record.Text != "")
+                    Input_student();
+                else
+                    MessageBox.Show("Error, wrong input.\nRepeat please input");
+            }
         }
 
         private void button_password_Click_1(object sender, EventArgs e)
@@ -221,15 +224,18 @@ namespace Coursework
                         "\nCourse: " + dataGridView.Rows[i].Cells[3].Value.ToString();
                     index_search = i;
                     count++;
+                    richText.Text += dataGridView.Rows[index_search].Cells[0].Value.ToString() + "was found\n";
                     button_check_password.Enabled = true;
                     button_Delete.Enabled = true;
-
                     break;
                 }               
             }
-            if(count == 0)                 
+            if (count == 0)
+            {
                 richTextBox_search.Text = "Not found, such student\n";
-            richText.Text += dataGridView.Rows[index_search].Cells[0].Value.ToString() + "was found\n";
+                button_check_password.Enabled = false;
+                button_Delete.Enabled = false;
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -351,7 +357,7 @@ namespace Coursework
                 
         private void button_check_password_Click(object sender, EventArgs e)
         {
-            if (textBox_check_password.Text == textBox_password.Text)
+            if (textBox_check_password.Text == textBox_password.Text && textBox_check_password.Text != "")
             {
                 Menu.TabPages.Insert(3, tabPageEdit);
                 Menu.SelectedTab = Menu.TabPages[3];
@@ -367,9 +373,11 @@ namespace Coursework
 
         private void button_Delete_Click(object sender, EventArgs e)
         {
+            string name = dataGridView.Rows[index_search].Cells[0].Value.ToString();
             dataGridView.Rows.RemoveAt(index_search);
+            dataGridView.Refresh();
             MessageBox.Show("All data about student, deleted successfully");
-            richText.Text += "The student " + dataGridView.Rows[index_search].Cells[0].Value.ToString() + 
+            richText.Text += "The student " + name + 
                 " was deleted from database\n";
         }
 
@@ -491,7 +499,6 @@ namespace Coursework
             Excel.Worksheet worksheet = workbook.ActiveSheet;
             excelapp.Visible = false;
 
-            //Preparing to export user password
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
                 for (int j = 0; j < dataGridView.ColumnCount; j++)
@@ -517,9 +524,12 @@ namespace Coursework
 
         private void openXlsxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            if (dataGridView.RowCount != 0)
             {
-                dataGridView.Rows.RemoveAt(i);
+                for (int i = dataGridView.RowCount - 1; i >= 0; i--)
+                {
+                    dataGridView.Rows.RemoveAt(i);
+                }
             }
             OpenFileDialog opf = new OpenFileDialog();
             opf.Filter = "Excel (*.XLS)|*.XLS ";
@@ -553,8 +563,9 @@ namespace Coursework
                         break;
                     }
                 }
-                richText.Text = "Data importing finished succesful\n";
+                richText.Text += "Data importing finished succesful\n";
                 MessageBox.Show("File opened");
+                Button_true();
                 ExcelApp.Quit();
             }
         }

@@ -52,7 +52,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(705, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(682, 450);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dataGridViewShow
@@ -69,8 +69,9 @@
             this.dataGridViewShow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewShow.Location = new System.Drawing.Point(3, 66);
             this.dataGridViewShow.Name = "dataGridViewShow";
+            this.dataGridViewShow.RowHeadersVisible = false;
             this.dataGridViewShow.RowTemplate.Height = 24;
-            this.dataGridViewShow.Size = new System.Drawing.Size(699, 381);
+            this.dataGridViewShow.Size = new System.Drawing.Size(676, 381);
             this.dataGridViewShow.TabIndex = 0;
             // 
             // Name_
@@ -116,7 +117,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(3, 3);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(699, 57);
+            this.richTextBox1.Size = new System.Drawing.Size(676, 57);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -124,7 +125,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 450);
+            this.ClientSize = new System.Drawing.Size(682, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Show";
             this.Text = "Show";
