@@ -22,7 +22,6 @@ namespace Coursework
         internal int count_stud = 0, count_record = 0;
         public List<double> marks = new List<double>();
         int index_search = 0;
-        bool prov = false;
         public Form1()  
         {
             student = new Student();
@@ -124,7 +123,7 @@ namespace Coursework
             marks.Clear();
             double[] average_mark = new double[N];
             int k = 6, count = 0;
-            count_stud = 0;
+            List<int> index_thebest = new List<int>();
             for (int i = 0; i < N; i++)
             {
                 k = 6;
@@ -136,8 +135,8 @@ namespace Coursework
                 average_mark[i] /= 5;
                 if (average_mark[i] >= 4)
                 {
-                    count_stud++;
                     marks.Add(average_mark[i]);
+                    index_thebest.Add(i);
                 }
                 else
                     count++;
@@ -146,12 +145,12 @@ namespace Coursework
                 MessageBox.Show("Not found, such students\n");
             else
             {
-                for (int i = 0; i < count_stud; i++)
+                for (int i = 0; i < marks.Count; i++)
                 {
                     show.dataGridViewShow.Rows.Add();
                     for (int j = 0; j < 4; j++)
                     {
-                        show.dataGridViewShow.Rows[i].Cells[j].Value = dataGridView.Rows[i].Cells[j].Value;
+                        show.dataGridViewShow.Rows[i].Cells[j].Value = dataGridView.Rows[index_thebest[i]].Cells[j].Value;
                     }
                     show.dataGridViewShow.Rows[i].Cells[4].Value = marks[i];
                 }
@@ -171,7 +170,8 @@ namespace Coursework
             int N = dataGridView.RowCount;
             double[] average_mark = new double[N];
             int k = 6, count = 0;
-            count_stud = 0;
+            List<int> index_dupes = new List<int>();
+            //count_stud = 0;
             for (int i = 0; i < N; i++)
             {
                 k = 6;
@@ -183,8 +183,8 @@ namespace Coursework
                 average_mark[i] /= 5;
                 if (average_mark[i] < 3)
                 {
-                    count_stud++;
                     marks.Add(average_mark[i]);
+                    index_dupes.Add(i);
                 }
                 else
                     count++;
@@ -193,12 +193,12 @@ namespace Coursework
                 MessageBox.Show("Not found, such students\n");
             else
             {
-                for (int i = 0; i < count_stud; i++)
+                for (int i = 0; i < marks.Count; i++)
                 {
                     show.dataGridViewShow.Rows.Add();
                     for (int j = 0; j < 4; j++)
                     {
-                        show.dataGridViewShow.Rows[i].Cells[j].Value = dataGridView.Rows[i].Cells[j].Value;
+                        show.dataGridViewShow.Rows[i].Cells[j].Value = dataGridView.Rows[index_dupes[i]].Cells[j].Value;
                     }
                     show.dataGridViewShow.Rows[i].Cells[4].Value = marks[i];
                 }
@@ -295,7 +295,6 @@ namespace Coursework
 
         private void button_discipline_Click(object sender, EventArgs e)
         {
-           // richTextInformation.Text = "Discipline on which the greatest number of students received twos\n";
             int k = 0, p = 0, n, s = 0, check_on_check = 0, Count = 0;
             n = dataGridView.RowCount * 5;
             string[] dicipline = new string[n];
@@ -361,6 +360,8 @@ namespace Coursework
             {
                 Menu.TabPages.Insert(3, tabPageEdit);
                 Menu.SelectedTab = Menu.TabPages[3];
+                button_check_password.Enabled = false;
+                button_Delete.Enabled = false;
             }           
             else
                 MessageBox.Show("Wrong Password!\nLook your password on the page Create and repid please");
@@ -376,6 +377,7 @@ namespace Coursework
             string name = dataGridView.Rows[index_search].Cells[0].Value.ToString();
             dataGridView.Rows.RemoveAt(index_search);
             dataGridView.Refresh();
+            textBox_search.Text = "";
             MessageBox.Show("All data about student, deleted successfully");
             richText.Text += "The student " + name + 
                 " was deleted from database\n";
@@ -462,6 +464,7 @@ namespace Coursework
         private void save_changes_Click(object sender, EventArgs e)
         {
             dataGridView.Refresh();
+            textBox_search.Text = "";
             MessageBox.Show("Entered data saved");
             richText.Text += "Database was edited";
             Menu.TabPages.Remove(tabPageEdit);
@@ -469,27 +472,37 @@ namespace Coursework
 
         private void remove_losers_Click(object sender, EventArgs e)
         {
-            int k = 0;
-            for (int i = 0; i < dataGridView.RowCount; i++)
+            int k = 0, number = 0, count = 0, n_row = dataGridView.RowCount;            
+            while (number != dataGridView.RowCount)
             {
                 k = 6;
+                count = 0;
                 for (int j = 0; j < 5; j++)
                 {
-                    if (Convert.ToInt32(dataGridView.Rows[i].Cells[k].Value) == 2)
+                    if (Convert.ToInt32(dataGridView.Rows[number].Cells[k].Value) == 2)
                     {
-                        dataGridView.Rows.RemoveAt(i);                        
+                        dataGridView.Rows.RemoveAt(number);                        
+                        count = 1;
                         break;
                     }
                     k += 3;
                 }
+                if (count != 1)
+                {
+                    number++;
+                }
             }
             dataGridView.Refresh();
-            DialogResult result = MessageBox.Show("Data about the students succsessfully removed\n" +
-                            "Do you want to show table?", "Cancle", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-                Menu.SelectedTab = Menu.TabPages[1];
-            //MessageBox.Show("Data removed");
-            richText.Text += "Data on students who have had deuces removed";
+            if (dataGridView.RowCount != n_row)
+            {
+                DialogResult result = MessageBox.Show("Data about the students succsessfully removed\n" +
+                                "Do you want to show table?", "Cancle", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    Menu.SelectedTab = Menu.TabPages[1];
+                richText.Text += "Data on students who have had deuces removed";
+            }
+            else
+                MessageBox.Show("Not found, each students");
         }
 
         private void saveInXlsxToolStripMenuItem_Click(object sender, EventArgs e)
@@ -519,7 +532,6 @@ namespace Coursework
             excelapp.AlertBeforeOverwriting = false;
             workbook.SaveAs(path, ReadOnlyRecommended: true);
             excelapp.Quit();
-
         }
 
         private void openXlsxToolStripMenuItem_Click(object sender, EventArgs e)
@@ -569,7 +581,10 @@ namespace Coursework
                 ExcelApp.Quit();
             }
         }
-
+        private void Form1_HelpRequested_1(object sender, HelpEventArgs hlpevent)
+        {
+            Process.Start(@"C:\Users\Andrew Buteskul\Course_work\Coursework\Coursework\Manual.chm");
+        }
         //-------------------------------Checks----------------------------------------
         void Check_input_text(object sender, KeyPressEventArgs e)
         {
@@ -638,13 +653,6 @@ namespace Coursework
         }
 
         private void referenceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start(@"C:\Users\Andrew Buteskul\Course_work\Coursework\Coursework\Manual.chm");
-        }
-
-        //----------------------------------------------------------------------------
-
-        private void Form1_HelpRequested_1(object sender, HelpEventArgs hlpevent)
         {
             Process.Start(@"C:\Users\Andrew Buteskul\Course_work\Coursework\Coursework\Manual.chm");
         }

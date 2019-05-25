@@ -18,24 +18,6 @@ namespace Coursework
             this.form = form1;            
             InitializeComponent();            
             richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
-
-            //DialogResult result = MessageBox.Show("Do you want to show students?", "Cancle", MessageBoxButtons.YesNo);
-            //if (result == DialogResult.Yes)
-            //{
-            //    for (int i = 0; i < form.count_stud; i++)
-            //    {
-            //        dataGridViewShow.Rows.Add();
-            //        for (int j = 0; j < 4; j++)
-            //        {
-            //            dataGridViewShow.Rows[i].Cells[j].Value = form.dataGridView.Rows[i].Cells[j].Value;
-            //        }
-            //        dataGridViewShow.Rows[i].Cells[4].Value = form.marks[i];
-            //    }
-            //    dataGridViewShow.Refresh();
-            //}
-            //else
-            //    Close();
-
         }
 
 
