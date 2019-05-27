@@ -155,6 +155,7 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.Size = new System.Drawing.Size(983, 418);
             this.dataGridView.TabIndex = 0;
@@ -162,6 +163,7 @@
             // Name_student
             // 
             this.Name_student.HeaderText = "Name";
+            this.Name_student.MinimumWidth = 6;
             this.Name_student.Name = "Name_student";
             this.Name_student.ReadOnly = true;
             this.Name_student.Width = 120;
@@ -169,6 +171,7 @@
             // Record_number
             // 
             this.Record_number.HeaderText = "Record Number";
+            this.Record_number.MinimumWidth = 6;
             this.Record_number.Name = "Record_number";
             this.Record_number.ReadOnly = true;
             this.Record_number.Width = 50;
@@ -176,12 +179,15 @@
             // name_faculty
             // 
             this.name_faculty.HeaderText = "Name Faculty";
+            this.name_faculty.MinimumWidth = 6;
             this.name_faculty.Name = "name_faculty";
             this.name_faculty.ReadOnly = true;
+            this.name_faculty.Width = 125;
             // 
             // number_course
             // 
             this.number_course.HeaderText = "Course ";
+            this.number_course.MinimumWidth = 6;
             this.number_course.Name = "number_course";
             this.number_course.ReadOnly = true;
             this.number_course.Width = 50;
@@ -189,18 +195,23 @@
             // subject1
             // 
             this.subject1.HeaderText = "Subject 1";
+            this.subject1.MinimumWidth = 6;
             this.subject1.Name = "subject1";
             this.subject1.ReadOnly = true;
+            this.subject1.Width = 125;
             // 
             // Teacher1
             // 
             this.Teacher1.HeaderText = "Teacher";
+            this.Teacher1.MinimumWidth = 6;
             this.Teacher1.Name = "Teacher1";
             this.Teacher1.ReadOnly = true;
+            this.Teacher1.Width = 125;
             // 
             // Mark1
             // 
             this.Mark1.HeaderText = "Mark";
+            this.Mark1.MinimumWidth = 6;
             this.Mark1.Name = "Mark1";
             this.Mark1.ReadOnly = true;
             this.Mark1.Width = 35;
@@ -208,18 +219,23 @@
             // Subject2
             // 
             this.Subject2.HeaderText = "Subject 2";
+            this.Subject2.MinimumWidth = 6;
             this.Subject2.Name = "Subject2";
             this.Subject2.ReadOnly = true;
+            this.Subject2.Width = 125;
             // 
             // Teacher2
             // 
             this.Teacher2.HeaderText = "Teacher";
+            this.Teacher2.MinimumWidth = 6;
             this.Teacher2.Name = "Teacher2";
             this.Teacher2.ReadOnly = true;
+            this.Teacher2.Width = 125;
             // 
             // Mark2
             // 
             this.Mark2.HeaderText = "Mark";
+            this.Mark2.MinimumWidth = 6;
             this.Mark2.Name = "Mark2";
             this.Mark2.ReadOnly = true;
             this.Mark2.Width = 35;
@@ -227,18 +243,23 @@
             // Subject3
             // 
             this.Subject3.HeaderText = "Subject 3";
+            this.Subject3.MinimumWidth = 6;
             this.Subject3.Name = "Subject3";
             this.Subject3.ReadOnly = true;
+            this.Subject3.Width = 125;
             // 
             // Teacher3
             // 
             this.Teacher3.HeaderText = "Teacher";
+            this.Teacher3.MinimumWidth = 6;
             this.Teacher3.Name = "Teacher3";
             this.Teacher3.ReadOnly = true;
+            this.Teacher3.Width = 125;
             // 
             // Mark3
             // 
             this.Mark3.HeaderText = "Mark";
+            this.Mark3.MinimumWidth = 6;
             this.Mark3.Name = "Mark3";
             this.Mark3.ReadOnly = true;
             this.Mark3.Width = 35;
@@ -246,18 +267,23 @@
             // Subject4
             // 
             this.Subject4.HeaderText = "Subject 4";
+            this.Subject4.MinimumWidth = 6;
             this.Subject4.Name = "Subject4";
             this.Subject4.ReadOnly = true;
+            this.Subject4.Width = 125;
             // 
             // Teacher4
             // 
             this.Teacher4.HeaderText = "Teacher";
+            this.Teacher4.MinimumWidth = 6;
             this.Teacher4.Name = "Teacher4";
             this.Teacher4.ReadOnly = true;
+            this.Teacher4.Width = 125;
             // 
             // Mark4
             // 
             this.Mark4.HeaderText = "Mark";
+            this.Mark4.MinimumWidth = 6;
             this.Mark4.Name = "Mark4";
             this.Mark4.ReadOnly = true;
             this.Mark4.Width = 35;
@@ -265,18 +291,23 @@
             // Subject5
             // 
             this.Subject5.HeaderText = "Subject 5";
+            this.Subject5.MinimumWidth = 6;
             this.Subject5.Name = "Subject5";
             this.Subject5.ReadOnly = true;
+            this.Subject5.Width = 125;
             // 
             // Teacher5
             // 
             this.Teacher5.HeaderText = "Teacher";
+            this.Teacher5.MinimumWidth = 6;
             this.Teacher5.Name = "Teacher5";
             this.Teacher5.ReadOnly = true;
+            this.Teacher5.Width = 125;
             // 
             // Mark5
             // 
             this.Mark5.HeaderText = "Mark";
+            this.Mark5.MinimumWidth = 6;
             this.Mark5.Name = "Mark5";
             this.Mark5.ReadOnly = true;
             this.Mark5.Width = 35;
@@ -870,7 +901,7 @@
             this.remove_losers.Name = "remove_losers";
             this.remove_losers.Size = new System.Drawing.Size(977, 100);
             this.remove_losers.TabIndex = 4;
-            this.remove_losers.Text = "Remove students who have at least one deuce";
+            this.remove_losers.Text = "Remove losers";
             this.remove_losers.UseVisualStyleBackColor = true;
             this.remove_losers.Click += new System.EventHandler(this.remove_losers_Click);
             // 
@@ -883,7 +914,7 @@
             this.button_thebest.Name = "button_thebest";
             this.button_thebest.Size = new System.Drawing.Size(977, 98);
             this.button_thebest.TabIndex = 1;
-            this.button_thebest.Text = "See the best students ";
+            this.button_thebest.Text = "Show the best students";
             this.button_thebest.UseVisualStyleBackColor = true;
             this.button_thebest.Click += new System.EventHandler(this.button_thebest_Click);
             // 
@@ -896,7 +927,7 @@
             this.button_dupes.Name = "button_dupes";
             this.button_dupes.Size = new System.Drawing.Size(977, 98);
             this.button_dupes.TabIndex = 2;
-            this.button_dupes.Text = "View dupes";
+            this.button_dupes.Text = "Show losers ";
             this.button_dupes.UseVisualStyleBackColor = true;
             this.button_dupes.Click += new System.EventHandler(this.button_dupes_Click);
             // 
@@ -909,7 +940,7 @@
             this.button_discipline.Name = "button_discipline";
             this.button_discipline.Size = new System.Drawing.Size(977, 98);
             this.button_discipline.TabIndex = 3;
-            this.button_discipline.Text = "Discipline on which more twos";
+            this.button_discipline.Text = "The most difficult subject";
             this.button_discipline.UseVisualStyleBackColor = true;
             this.button_discipline.Click += new System.EventHandler(this.button_discipline_Click);
             // 
@@ -933,13 +964,13 @@
             this.openXlsxToolStripMenuItem,
             this.save_xls});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.openToolStripMenuItem.Text = "Open txt";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -947,14 +978,14 @@
             // 
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.saveToolStripMenuItem.Text = "Save in txt";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // openXlsxToolStripMenuItem
             // 
             this.openXlsxToolStripMenuItem.Name = "openXlsxToolStripMenuItem";
-            this.openXlsxToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.openXlsxToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.openXlsxToolStripMenuItem.Text = "Open xls";
             this.openXlsxToolStripMenuItem.Click += new System.EventHandler(this.openXlsxToolStripMenuItem_Click);
             // 
@@ -962,14 +993,14 @@
             // 
             this.save_xls.Enabled = false;
             this.save_xls.Name = "save_xls";
-            this.save_xls.Size = new System.Drawing.Size(152, 26);
+            this.save_xls.Size = new System.Drawing.Size(224, 26);
             this.save_xls.Text = "Save in xls";
             this.save_xls.Click += new System.EventHandler(this.saveInXlsxToolStripMenuItem_Click);
             // 
             // referenceToolStripMenuItem
             // 
             this.referenceToolStripMenuItem.Name = "referenceToolStripMenuItem";
-            this.referenceToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
+            this.referenceToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
             this.referenceToolStripMenuItem.Text = "Reference";
             this.referenceToolStripMenuItem.Click += new System.EventHandler(this.referenceToolStripMenuItem_Click);
             // 

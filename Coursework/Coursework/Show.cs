@@ -12,12 +12,11 @@ namespace Coursework
 {
     public partial class Show : Form
     {
-        private Form1 form;
-        public Show(Form1 form1)
+        public Show()
         {
-            this.form = form1;            
             InitializeComponent();            
             richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
+            richTextBox1.SelectionFont = new Font("Verdana", 40, FontStyle.Regular);
         }
 
 
