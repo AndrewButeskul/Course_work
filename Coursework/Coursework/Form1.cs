@@ -438,12 +438,22 @@ namespace Coursework
             dataGridView.Rows[index_search].Cells[3].Value = edit_course.Value;
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
-                if (edit_record.Text != dataGridView.Rows[i].Cells[1].Value.ToString()) // проверка на коректность введенного номера зачетки
-                    count++;                
+                if (index_search != i)
+                {
+                    if (edit_record.Text == dataGridView.Rows[i].Cells[1].Value.ToString()) // проверка на коректность введенного номера зачетки
+                    {
+                        count = 1;
+                        break;
+                    }
+                    else
+                        count = 2;
+                }
+                else
+                    continue;
             }
-            if(count == dataGridView.RowCount)
+            if(count == 2)
                 dataGridView.Rows[index_search].Cells[1].Value = edit_record.Text;
-            else
+            else if(count == 1)
                 MessageBox.Show("Error!\n Please repeat input");
         }
         private void button_change_progress_Click(object sender, EventArgs e)
