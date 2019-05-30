@@ -15,7 +15,6 @@ namespace Coursework
         public Show()
         {
             InitializeComponent();            
-            richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
             richTextBox1.SelectionFont = new Font("Verdana", 40, FontStyle.Regular);
         }
 

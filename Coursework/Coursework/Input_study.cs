@@ -24,14 +24,13 @@ namespace Coursework
             InitializeComponent();
             check_enabled = 0;
             textBox_subject1.Text = "Програмированние";
-            //textBox_teacher1.Text = "Кваша Григорий Иванович";
         }
         private void button_add_progress_Click(object sender, EventArgs e)
         {
             if (count >= 5)
                 count = 0;
                 study[count].Subject = textBox_subject1.Text;
-                study[count].Name_teacher = comboBox_teacher.Text; //textBox_teacher1.Text;
+                study[count].Name_teacher = comboBox_teacher.Text; 
                 study[count].Mark = Convert.ToDouble(numeric_mark1.Value);
                 count++;                        
             Close();
@@ -41,7 +40,6 @@ namespace Coursework
             check_enabled = 1;
             Close();
         }
-
         void Check_input_text(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar.Equals('\b')) return;
@@ -57,12 +55,10 @@ namespace Coursework
             }
             e.Handled = !char.IsLetter(e.KeyChar);
         }
-
         private void textBox_subject1_KeyPress(object sender, KeyPressEventArgs e)
         {
             Check_input_text(sender, e);
         }
-
         private void ComboBox_teacher_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar.Equals('\b')) return;
@@ -78,7 +74,6 @@ namespace Coursework
             }
             e.Handled = !char.IsLetter(e.KeyChar);
         }
-
-       
+               
     }
 }

@@ -148,6 +148,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox_subject1);
             this.MaximumSize = new System.Drawing.Size(480, 283);
+            this.MinimumSize = new System.Drawing.Size(480, 283);
             this.Name = "Input_study";
             this.Text = "Input_study";
             ((System.ComponentModel.ISupportInitialize)(this.numeric_mark1)).EndInit();

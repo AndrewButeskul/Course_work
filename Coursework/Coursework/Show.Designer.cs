@@ -52,7 +52,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(682, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(674, 450);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dataGridViewShow
@@ -70,44 +70,55 @@
             this.dataGridViewShow.Location = new System.Drawing.Point(3, 66);
             this.dataGridViewShow.Name = "dataGridViewShow";
             this.dataGridViewShow.RowHeadersVisible = false;
+            this.dataGridViewShow.RowHeadersWidth = 51;
             this.dataGridViewShow.RowTemplate.Height = 24;
-            this.dataGridViewShow.Size = new System.Drawing.Size(676, 381);
+            this.dataGridViewShow.Size = new System.Drawing.Size(668, 381);
             this.dataGridViewShow.TabIndex = 0;
             // 
             // Name_
             // 
             this.Name_.Frozen = true;
             this.Name_.HeaderText = "Name";
+            this.Name_.MinimumWidth = 6;
             this.Name_.Name = "Name_";
             this.Name_.ReadOnly = true;
+            this.Name_.Width = 125;
             // 
             // Group_number_
             // 
             this.Group_number_.Frozen = true;
             this.Group_number_.HeaderText = "Group number";
+            this.Group_number_.MinimumWidth = 6;
             this.Group_number_.Name = "Group_number_";
             this.Group_number_.ReadOnly = true;
+            this.Group_number_.Width = 125;
             // 
             // Faculty_
             // 
             this.Faculty_.Frozen = true;
             this.Faculty_.HeaderText = "Faculty";
+            this.Faculty_.MinimumWidth = 6;
             this.Faculty_.Name = "Faculty_";
             this.Faculty_.ReadOnly = true;
+            this.Faculty_.Width = 125;
             // 
             // Course_
             // 
             this.Course_.Frozen = true;
             this.Course_.HeaderText = "Course";
+            this.Course_.MinimumWidth = 6;
             this.Course_.Name = "Course_";
             this.Course_.ReadOnly = true;
+            this.Course_.Width = 125;
             // 
             // Average_mark_
             // 
             this.Average_mark_.Frozen = true;
             this.Average_mark_.HeaderText = "Average mark";
+            this.Average_mark_.MinimumWidth = 6;
             this.Average_mark_.Name = "Average_mark_";
             this.Average_mark_.ReadOnly = true;
+            this.Average_mark_.Width = 125;
             // 
             // richTextBox1
             // 
@@ -117,7 +128,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(3, 3);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(676, 57);
+            this.richTextBox1.Size = new System.Drawing.Size(668, 57);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -125,8 +136,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 450);
+            this.ClientSize = new System.Drawing.Size(674, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximumSize = new System.Drawing.Size(692, 497);
+            this.MinimumSize = new System.Drawing.Size(692, 497);
             this.Name = "Show";
             this.Text = "Show";
             this.tableLayoutPanel1.ResumeLayout(false);

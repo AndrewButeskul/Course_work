@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Data.OleDb;
 using System.Diagnostics;
 
 namespace Coursework
@@ -21,9 +16,9 @@ namespace Coursework
         Input_study input = new Input_study();
         Show show = new Show();
         internal int count_stud = 0, count_record = 0;
-        public List<double> marks = new List<double>();
-        List<int> index_student = new List<int>();
-        List<double> average_mark = new List<double>();
+        public List<double> marks = new List<double>(); // хранит оценки для подальшего просмотра их пользователем
+        List<int> index_student = new List<int>(); //хранит индексы студентов 
+        List<double> average_mark = new List<double>(); //хранит в себе средние оценки 
         int index_search = 0, k = 0, count = 0;
         public Form1()
         {
@@ -34,16 +29,16 @@ namespace Coursework
                 study[i] = new Study();
             }
             InitializeComponent();
+            Menu.TabPages.Remove(tabPageEdit);
+            button_check_password.Enabled = false;
+            button_Delete.Enabled = false;
+            Export_List_Teachers(); //подгружает данные в ComboBox  для выбора преподавателя
 
             //*********Example**********//
             textBox_name.Text = "Влад Иванов";
             textBox_record.Text = "10";
-            textBox_faculty.Text = "ИКС";
-            Menu.TabPages.Remove(tabPageEdit);
-            button_check_password.Enabled = false;
-            button_Delete.Enabled = false;
-            richText.Text += "History of operation:\n";
-            Export_List_Teachers();
+            textBox_faculty.Text = "ИКС";            
+            richText.Text += "History of operation:\n";            
         }
         //------------------------Functions-----------------------------
         void Input_student()
@@ -55,7 +50,7 @@ namespace Coursework
             for (int i = 0; i < 5; i++)
             {
                 input.ShowDialog();
-                if (input.check_enabled == 1)
+                if (input.check_enabled == 1) // проверка на нажатие "Cancel"
                 {
                     break;
                 }
@@ -68,13 +63,14 @@ namespace Coursework
                     input.study[2].Subject, input.study[2].Name_teacher, input.study[2].Mark,
                     input.study[3].Subject, input.study[3].Name_teacher, input.study[3].Mark,
                     input.study[4].Subject, input.study[4].Name_teacher, input.study[4].Mark);
-                richText.Text += "Student added to database\n";
-                MessageBox.Show("The student successfully added!");
+                richText.Text += "Student was added\n";
+                MessageBox.Show("Student successfully added!");
                 Button_true();
             }
         }
         void Button_true()
         {
+            // разблокировка кнопок
             button_discipline.Enabled = true;
             button_thebest.Enabled = true;
             button_dupes.Enabled = true;
@@ -103,6 +99,8 @@ namespace Coursework
             }
             show.dataGridViewShow.Sort(show.dataGridViewShow.Columns[4], ListSortDirection.Ascending);
             show.dataGridViewShow.Refresh();
+            show.richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
+
         }
         void Average_mark()
         {
@@ -120,9 +118,7 @@ namespace Coursework
             }
         }
         void Export_List_Teachers()
-        {
-            //if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-            //    return;
+        {            
             string path = "List of the teachers.txt";
             BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open));
             for (int i = 0; i < 10; i++)
@@ -146,35 +142,35 @@ namespace Coursework
             {
                 for (int i = 0; i < dataGridView.RowCount; i++)
                 {
-                    if (dataGridView.Rows[i].Cells[1].Value.ToString() == textBox_record.Text)
+                    if (dataGridView.Rows[i].Cells[1].Value.ToString() == textBox_record.Text) // проверка на сходимость номеров зачетки
                         count_record++;
                 }
                 if (count_record == 0 && textBox_name.Text != "" && textBox_record.Text != "")
-                    Input_student();
+                    Input_student(); 
                 else
-                    MessageBox.Show("Each the student already exists.\nRepeat input");
-
+                    MessageBox.Show("That student already exists.\nRepeat input");
             }
             else
             {
                 if (textBox_name.Text != "" && textBox_record.Text != "")
                     Input_student();
                 else
-                    MessageBox.Show("Error, wrong input.\nRepeat please input");
+                    MessageBox.Show("Input error!.\nRepeat please");
             }
         }
         private void button_password_Click_1(object sender, EventArgs e)
         {
+            // генерация пароля
             int pin;
             Random rand = new Random();
-            pin = rand.Next(9999);
+            pin = rand.Next(999, 9999);
             textBox_password.Text = Convert.ToString(pin);
             richText.Text += "Password was generated: " + textBox_password.Text + "\n";
         }
         private void button_thebest_Click(object sender, EventArgs e)
         {
             average_mark.Clear();
-            Average_mark();
+            Average_mark(); // запуск функции для нахождения средней оценки у студентов
             marks.Clear();
             index_student.Clear();
             k = 6;
@@ -183,8 +179,8 @@ namespace Coursework
             {               
                 if (average_mark[i] >= 4)
                 {
-                    marks.Add(average_mark[i]);
-                    index_student.Add(i);
+                    marks.Add(average_mark[i]); // сохраняем оценку
+                    index_student.Add(i); // сохраняем индекс студента
                 }
                 else
                     count++;
@@ -193,8 +189,8 @@ namespace Coursework
                 MessageBox.Show("Not found, such students\n");
             else
             {
-                Fill_Form_Show();
                 show.richTextBox1.Text = "The best students:";
+                Fill_Form_Show(); // запуск новой формы для вывода лучших студентов на экран
                 show.ShowDialog();
             }
             richText.Text += "The best students were input\n";
@@ -202,7 +198,7 @@ namespace Coursework
         private void button_dupes_Click(object sender, EventArgs e)
         {
             average_mark.Clear();
-            Average_mark();
+            Average_mark(); // запуск функции для нахождения средней оценки у студентов
             marks.Clear();
             index_student.Clear();
             k = 6;
@@ -214,8 +210,8 @@ namespace Coursework
                 {                   
                     if (Convert.ToInt32(dataGridView.Rows[i].Cells[k].Value) == 2)
                     {
-                        marks.Add(average_mark[i]);
-                        index_student.Add(i);
+                        marks.Add(average_mark[i]); // сохраняем оценку
+                        index_student.Add(i); // сохраняем индекс студента
                         break;
                     }
                     else
@@ -227,8 +223,8 @@ namespace Coursework
                 MessageBox.Show("Not found, such students\n");
             else
             {
-                Fill_Form_Show();
                 show.richTextBox1.Text = "The students losers:";
+                Fill_Form_Show(); // запуск новой формы для вывода худших студентов на экран
                 show.ShowDialog();
             }
             richText.Text += "The losers were input\n";
@@ -238,7 +234,7 @@ namespace Coursework
             count = 0;
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
-                if (textBox_search.Text == dataGridView.Rows[i].Cells[1].Value.ToString())
+                if (textBox_search.Text == dataGridView.Rows[i].Cells[1].Value.ToString()) // поиск по номеру зачетки
                 {
                     richTextBox_search.Text = "Name: " + dataGridView.Rows[i].Cells[0].Value.ToString() +
                         "\nRecord Number: " + dataGridView.Rows[i].Cells[1].Value.ToString() +
@@ -269,7 +265,7 @@ namespace Coursework
                 }
             }
             dataGridView.Rows.Add();
-            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel) // открытие диалогового окна
                 return;
             string path = openFileDialog1.FileName;
             BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open));
@@ -279,7 +275,7 @@ namespace Coursework
                 {
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
-                        dataGridView.Rows[i].Cells[j].Value = reader.ReadString();
+                        dataGridView.Rows[i].Cells[j].Value = reader.ReadString(); // счытивание данных с файла в таблицу
                     }
                     dataGridView.Rows.Add();
                 }
@@ -296,7 +292,7 @@ namespace Coursework
         }
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel) // открытие диалогового окна
                 return;
             string path = saveFileDialog1.FileName;
             BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate));
@@ -305,7 +301,7 @@ namespace Coursework
             {
                 for (int j = 0; j < dataGridView.ColumnCount; j++)
                 {                    
-                    writer.Write(dataGridView.Rows[i].Cells[j].Value.ToString());                    
+                    writer.Write(dataGridView.Rows[i].Cells[j].Value.ToString()); // запись данных в файл                    
                 }
             }
             writer.Close();
@@ -316,21 +312,21 @@ namespace Coursework
         {
             int p = 0, n, s = 0, check_on_check = 0, Count = 0;
             n = dataGridView.RowCount * 5;
-            string[] dicipline = new string[n];
-            int[] count = new int[n];
+            string[] dicipline = new string[n]; // массив для хранения названия предметов
+            int[] count = new int[n]; // массив для хранения количество двоек
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
                 k = 6;
                 p = 4;
                 for (int j = 0; j < 5; j++)
                 {
-                    if (Convert.ToInt32(dataGridView.Rows[i].Cells[k].Value) == 2)
+                    if (Convert.ToInt32(dataGridView.Rows[i].Cells[k].Value) == 2) // поиск предмета с оценкой в 2
                     {
                         Count++;
                         check_on_check = 0;
                         if (s == 0)
                         {
-                            dicipline[s] = dataGridView.Rows[i].Cells[p].Value.ToString();
+                            dicipline[s] = dataGridView.Rows[i].Cells[p].Value.ToString(); // запись предмета 
                             count[s]++;
                             k += 3;
                             p += 3;
@@ -339,7 +335,7 @@ namespace Coursework
                         }
                         for (int l = 0; l < s; l++)
                         {
-                            if (dataGridView.Rows[i].Cells[p].Value.ToString() == dicipline[l])
+                            if (dataGridView.Rows[i].Cells[p].Value.ToString() == dicipline[l]) // проверка на названия предмета
                             {
                                 count[l]++;
                                 check_on_check++;
@@ -362,7 +358,7 @@ namespace Coursework
             {
                 if (count[i] >= max)
                 {
-                    max = count[i];
+                    max = count[i]; // нахождение предмета с найбольшим количеством двоек
                     p = i;
                 }
             }
@@ -374,7 +370,7 @@ namespace Coursework
         }                
         private void button_check_password_Click(object sender, EventArgs e)
         {
-            if (textBox_check_password.Text == textBox_password.Text && textBox_check_password.Text != "")
+            if (textBox_check_password.Text == textBox_password.Text && textBox_check_password.Text != "")// проверка пароля
             {
                 Menu.TabPages.Insert(3, tabPageEdit);
                 Menu.SelectedTab = Menu.TabPages[3];
@@ -392,7 +388,7 @@ namespace Coursework
         private void button_Delete_Click(object sender, EventArgs e)
         {
             string name = dataGridView.Rows[index_search].Cells[0].Value.ToString();
-            dataGridView.Rows.RemoveAt(index_search);
+            dataGridView.Rows.RemoveAt(index_search); // удаляем студента из базы по индексу найденому с помощью поиска
             dataGridView.Refresh();
             textBox_search.Text = "";
             MessageBox.Show("All data about student, deleted successfully");
@@ -401,6 +397,7 @@ namespace Coursework
         }
         private void button_choose_subject_Click(object sender, EventArgs e)
         {
+            // изменение информации о предмете
             int selection = Convert.ToInt32(choose_subject.Value);
             switch (selection)
             {
@@ -441,7 +438,7 @@ namespace Coursework
             dataGridView.Rows[index_search].Cells[3].Value = edit_course.Value;
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
-                if (edit_record.Text != dataGridView.Rows[i].Cells[1].Value.ToString())
+                if (edit_record.Text != dataGridView.Rows[i].Cells[1].Value.ToString()) // проверка на коректность введенного номера зачетки
                     count++;                
             }
             if(count == dataGridView.RowCount)
@@ -451,6 +448,7 @@ namespace Coursework
         }
         private void button_change_progress_Click(object sender, EventArgs e)
         {
+            //По нажатию кнопки выбираем предмет для редактирования 
             int selection = Convert.ToInt32(choose_subject.Value);
             switch (selection)
             {
@@ -489,7 +487,7 @@ namespace Coursework
             textBox_search.Text = "";
             MessageBox.Show("Entered data saved");
             richText.Text += "Database was edited";
-            Menu.TabPages.Remove(tabPageEdit);
+            Menu.TabPages.Remove(tabPageEdit); // скрываем раздел редактирование
         }
         private void remove_losers_Click(object sender, EventArgs e)
         {
@@ -502,7 +500,7 @@ namespace Coursework
                 {
                     if (Convert.ToInt32(dataGridView.Rows[number].Cells[k].Value) == 2)
                     {
-                        dataGridView.Rows.RemoveAt(number);                        
+                        dataGridView.Rows.RemoveAt(number); // удаляем студента с оценкой в 2 бала                       
                         count = 1;
                         break;
                     }
@@ -523,7 +521,7 @@ namespace Coursework
                 richText.Text += "Data on students who have had deuces removed";
             }
             else
-                MessageBox.Show("Not found, each students");
+                MessageBox.Show("Not found, such students");
         }
         private void saveInXlsxToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -541,13 +539,12 @@ namespace Coursework
             }
 
             SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "Excel (*.xls)|*.xls";
-
-            //Saving!
+            saveDialog.Filter = "Excel (*.xlsx)|*.xlsx";
+                        
             string path = null;
             saveDialog.ShowDialog();
             path = saveDialog.FileName;
-            richText.Text += "File succesfully saved in xls.";
+            richText.Text += "File succesfully saved in xlsx.";
             MessageBox.Show("File saved");
             excelapp.AlertBeforeOverwriting = false;
             workbook.SaveAs(path, ReadOnlyRecommended: true);
@@ -559,11 +556,11 @@ namespace Coursework
             {
                 for (int i = dataGridView.RowCount - 1; i >= 0; i--)
                 {
-                    dataGridView.Rows.RemoveAt(i);
+                    dataGridView.Rows.RemoveAt(i); // очищаем данные пере новой загрузкой
                 }
             }
             OpenFileDialog opf = new OpenFileDialog();
-            opf.Filter = "Excel (*.XLS)|*.XLS ";
+            opf.Filter = "Excel (*.xslx)|*.xslx ";
 
             if (opf.ShowDialog() == DialogResult.OK)
             {
@@ -573,7 +570,7 @@ namespace Coursework
                 Microsoft.Office.Interop.Excel._Workbook ExcelWorkBook;
                 Microsoft.Office.Interop.Excel.Worksheet ExcelWorkSheet;
 
-                //Opening
+                // Открытие 
                 ExcelWorkBook = ExcelApp.Workbooks.Open(filename, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows,
                     "\t", false, false, 0, true, 1, 0);
 
@@ -582,7 +579,7 @@ namespace Coursework
                 {
                     if (ExcelApp.Cells[i, 1].Value != null)
                     {
-                        //Importing our data to DBPreView
+                        //импорт данных 
                         dataGridView.Rows.Add(ExcelApp.Cells[i, 1].Value, ExcelApp.Cells[i, 2].Value, ExcelApp.Cells[i, 3].Value,
                             ExcelApp.Cells[i, 4].Value, ExcelApp.Cells[i, 5].Value, ExcelApp.Cells[i, 6].Value, ExcelApp.Cells[i, 7].Value,
                             ExcelApp.Cells[i, 8].Value, ExcelApp.Cells[i, 9].Value, ExcelApp.Cells[i, 10].Value, ExcelApp.Cells[i, 11].Value,
@@ -602,11 +599,11 @@ namespace Coursework
         }
         private void Form1_HelpRequested_1(object sender, HelpEventArgs hlpevent)
         {
-            Process.Start(@"C:\Users\Andrew Buteskul\Course_work\Coursework\Coursework\Manual.chm");
+            Process.Start(@"C:\Users\Andrew Buteskul\Course_work\Coursework\Coursework\Manual.chm"); // запускает Справку
         }
         private void referenceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Users\Andrew Buteskul\Course_work\Coursework\Coursework\Manual.chm");
+            Process.Start(@"C:\Users\Andrew Buteskul\Course_work\Coursework\Coursework\Manual.chm"); // запускает справку
         }
 
         //-------------------------------Checks----------------------------------------

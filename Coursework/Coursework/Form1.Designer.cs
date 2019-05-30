@@ -28,6 +28,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.Name_student = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Record_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -774,7 +775,7 @@
             // button_Delete
             // 
             this.button_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Delete.Location = new System.Drawing.Point(643, 242);
+            this.button_Delete.Location = new System.Drawing.Point(838, 221);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(129, 44);
             this.button_Delete.TabIndex = 50;
@@ -786,29 +787,29 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(567, 205);
+            this.label15.Location = new System.Drawing.Point(515, 233);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(314, 20);
+            this.label15.Size = new System.Drawing.Size(226, 20);
             this.label15.TabIndex = 49;
-            this.label15.Text = "To be able to delete student, enter button";
+            this.label15.Text = "Click button to delete student";
             this.toolTip1.SetToolTip(this.label15, "To unlock the button, find the first student");
             // 
             // button_check_password
             // 
             this.button_check_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_check_password.Location = new System.Drawing.Point(759, 142);
+            this.button_check_password.Location = new System.Drawing.Point(838, 141);
             this.button_check_password.Name = "button_check_password";
-            this.button_check_password.Size = new System.Drawing.Size(100, 39);
+            this.button_check_password.Size = new System.Drawing.Size(129, 39);
             this.button_check_password.TabIndex = 48;
-            this.button_check_password.Text = "Enter";
+            this.button_check_password.Text = "Edit";
             this.button_check_password.UseVisualStyleBackColor = true;
             this.button_check_password.Click += new System.EventHandler(this.button_check_password_Click);
             // 
             // textBox_check_password
             // 
-            this.textBox_check_password.Location = new System.Drawing.Point(571, 150);
+            this.textBox_check_password.Location = new System.Drawing.Point(718, 150);
             this.textBox_check_password.Name = "textBox_check_password";
-            this.textBox_check_password.Size = new System.Drawing.Size(153, 22);
+            this.textBox_check_password.Size = new System.Drawing.Size(101, 22);
             this.textBox_check_password.TabIndex = 47;
             this.toolTip1.SetToolTip(this.textBox_check_password, "Your password is on the Page Create");
             // 
@@ -816,20 +817,20 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(567, 112);
+            this.label14.Location = new System.Drawing.Point(515, 152);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(355, 20);
+            this.label14.Size = new System.Drawing.Size(177, 20);
             this.label14.TabIndex = 46;
-            this.label14.Text = "To be able to edit the data, enter the password";
+            this.label14.Text = "Enter password to edit";
             this.toolTip1.SetToolTip(this.label14, "To unlock the button, find the first student");
             // 
             // richTextBox_search
             // 
             this.richTextBox_search.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.richTextBox_search.Location = new System.Drawing.Point(28, 115);
+            this.richTextBox_search.Location = new System.Drawing.Point(28, 130);
             this.richTextBox_search.Name = "richTextBox_search";
             this.richTextBox_search.ReadOnly = true;
-            this.richTextBox_search.Size = new System.Drawing.Size(505, 301);
+            this.richTextBox_search.Size = new System.Drawing.Size(464, 286);
             this.richTextBox_search.TabIndex = 3;
             this.richTextBox_search.Text = "";
             // 
@@ -837,7 +838,7 @@
             // 
             this.button_search.Enabled = false;
             this.button_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_search.Location = new System.Drawing.Point(201, 54);
+            this.button_search.Location = new System.Drawing.Point(209, 76);
             this.button_search.Name = "button_search";
             this.button_search.Size = new System.Drawing.Size(102, 39);
             this.button_search.TabIndex = 2;
@@ -847,20 +848,20 @@
             // 
             // textBox_search
             // 
-            this.textBox_search.Location = new System.Drawing.Point(440, 23);
+            this.textBox_search.Location = new System.Drawing.Point(209, 48);
             this.textBox_search.Name = "textBox_search";
-            this.textBox_search.Size = new System.Drawing.Size(99, 22);
+            this.textBox_search.Size = new System.Drawing.Size(102, 22);
             this.textBox_search.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(24, 23);
+            this.label5.Location = new System.Drawing.Point(140, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(365, 20);
+            this.label5.Size = new System.Drawing.Size(238, 20);
             this.label5.TabIndex = 0;
-            this.label5.Text = "For search, please enter number record student";
+            this.label5.Text = "Enter number record to search";
             // 
             // tabPage5
             // 
@@ -986,7 +987,7 @@
             // 
             this.openXlsxToolStripMenuItem.Name = "openXlsxToolStripMenuItem";
             this.openXlsxToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.openXlsxToolStripMenuItem.Text = "Open xls";
+            this.openXlsxToolStripMenuItem.Text = "Open xlsx";
             this.openXlsxToolStripMenuItem.Click += new System.EventHandler(this.openXlsxToolStripMenuItem_Click);
             // 
             // save_xls
@@ -994,7 +995,7 @@
             this.save_xls.Enabled = false;
             this.save_xls.Name = "save_xls";
             this.save_xls.Size = new System.Drawing.Size(224, 26);
-            this.save_xls.Text = "Save in xls";
+            this.save_xls.Text = "Save in xlsx";
             this.save_xls.Click += new System.EventHandler(this.saveInXlsxToolStripMenuItem_Click);
             // 
             // referenceToolStripMenuItem
@@ -1020,7 +1021,10 @@
             this.ClientSize = new System.Drawing.Size(997, 481);
             this.Controls.Add(this.Menu);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(1015, 528);
+            this.MinimumSize = new System.Drawing.Size(1015, 528);
             this.Name = "Form1";
             this.Text = "Student Database";
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.Form1_HelpRequested_1);
