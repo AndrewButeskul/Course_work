@@ -134,40 +134,40 @@ namespace Coursework
                 }
             }
         }
-        private void button_add_Click(object sender, EventArgs e)
-        {
-            input.check_enabled = 0;
-            count_record = 0;
-            if (dataGridView.RowCount != 0)
-            {
-                for (int i = 0; i < dataGridView.RowCount; i++)
-                {
-                    if (dataGridView.Rows[i].Cells[1].Value.ToString() == textBox_record.Text) // проверка на сходимость номеров зачетки
-                        count_record++;
-                }
-                if (count_record == 0 && textBox_name.Text != "" && textBox_record.Text != "")
-                    Input_student(); 
-                else
-                    MessageBox.Show("That student already exists.\nRepeat input");
-            }
-            else
-            {
-                if (textBox_name.Text != "" && textBox_record.Text != "")
-                    Input_student();
-                else
-                    MessageBox.Show("Input error!.\nRepeat please");
-            }
-        }
-        private void button_password_Click_1(object sender, EventArgs e)
-        {
-            // генерация пароля
+        void Generate_Password()
+        {           
             int pin;
             Random rand = new Random();
-            pin = rand.Next(999, 9999);
+            pin = rand.Next(999, 9999);  // генерация пароля
             textBox_password.Text = Convert.ToString(pin);
-            richText.Text += "Password was generated: " + textBox_password.Text + "\n";
         }
-        private void button_thebest_Click(object sender, EventArgs e)
+        void Search_Student()
+        {
+            count = 0;
+            for (int i = 0; i < dataGridView.RowCount; i++)
+            {
+                if (textBox_search.Text == dataGridView.Rows[i].Cells[1].Value.ToString()) // поиск по номеру зачетки
+                {
+                    richTextBox_search.Text = "Name: " + dataGridView.Rows[i].Cells[0].Value.ToString() +
+                        "\nRecord Number: " + dataGridView.Rows[i].Cells[1].Value.ToString() +
+                        "\nName Faculty: " + dataGridView.Rows[i].Cells[2].Value.ToString() +
+                        "\nCourse: " + dataGridView.Rows[i].Cells[3].Value.ToString();
+                    index_search = i;
+                    count++;
+                    richText.Text += dataGridView.Rows[index_search].Cells[0].Value.ToString() + "was found\n";
+                    button_check_password.Enabled = true;
+                    button_Delete.Enabled = true;
+                    break;
+                }
+            }
+            if (count == 0)
+            {
+                richTextBox_search.Text = "Not found, such student\n";
+                button_check_password.Enabled = false;
+                button_Delete.Enabled = false;
+            }
+        }
+        void Search_the_best_student()
         {
             average_mark.Clear();
             Average_mark(); // запуск функции для нахождения средней оценки у студентов
@@ -176,7 +176,7 @@ namespace Coursework
             k = 6;
             count = 0;
             for (int i = 0; i < dataGridView.RowCount; i++)
-            {               
+            {
                 if (average_mark[i] >= 4)
                 {
                     marks.Add(average_mark[i]); // сохраняем оценку
@@ -195,7 +195,7 @@ namespace Coursework
             }
             richText.Text += "The best students were input\n";
         }
-        private void button_dupes_Click(object sender, EventArgs e)
+        void Search_the_losers()
         {
             average_mark.Clear();
             Average_mark(); // запуск функции для нахождения средней оценки у студентов
@@ -207,7 +207,7 @@ namespace Coursework
             {
                 k = 6;
                 for (int j = 0; j < 5; j++)
-                {                   
+                {
                     if (Convert.ToInt32(dataGridView.Rows[i].Cells[k].Value) == 2)
                     {
                         marks.Add(average_mark[i]); // сохраняем оценку
@@ -229,33 +229,7 @@ namespace Coursework
             }
             richText.Text += "The losers were input\n";
         }
-        private void button_search_Click(object sender, EventArgs e)
-        {
-            count = 0;
-            for (int i = 0; i < dataGridView.RowCount; i++)
-            {
-                if (textBox_search.Text == dataGridView.Rows[i].Cells[1].Value.ToString()) // поиск по номеру зачетки
-                {
-                    richTextBox_search.Text = "Name: " + dataGridView.Rows[i].Cells[0].Value.ToString() +
-                        "\nRecord Number: " + dataGridView.Rows[i].Cells[1].Value.ToString() +
-                        "\nName Faculty: " + dataGridView.Rows[i].Cells[2].Value.ToString() +
-                        "\nCourse: " + dataGridView.Rows[i].Cells[3].Value.ToString();
-                    index_search = i;
-                    count++;
-                    richText.Text += dataGridView.Rows[index_search].Cells[0].Value.ToString() + "was found\n";
-                    button_check_password.Enabled = true;
-                    button_Delete.Enabled = true;
-                    break;
-                }               
-            }
-            if (count == 0)
-            {
-                richTextBox_search.Text = "Not found, such student\n";
-                button_check_password.Enabled = false;
-                button_Delete.Enabled = false;
-            }
-        }
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        void Open_File_txt()
         {
             if (dataGridView.RowCount != 0)
             {
@@ -286,29 +260,24 @@ namespace Coursework
                 }
             }
             dataGridView.Rows.RemoveAt(dataGridView.RowCount - 1);
-            MessageBox.Show("File opened");
-            Button_true();
-            richText.Text += "Your data from File were opened\n";
         }
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        void Save_File_txt()
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel) // открытие диалогового окна
                 return;
             string path = saveFileDialog1.FileName;
             BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate));
-            
+
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
                 for (int j = 0; j < dataGridView.ColumnCount; j++)
-                {                    
+                {
                     writer.Write(dataGridView.Rows[i].Cells[j].Value.ToString()); // запись данных в файл                    
                 }
             }
             writer.Close();
-            MessageBox.Show("File saved");
-            richText.Text += "\nYour data were saved to File";
         }
-        private void button_discipline_Click(object sender, EventArgs e)
+        void Difficult_subject()
         {
             int p = 0, n, s = 0, check_on_check = 0, Count = 0;
             n = dataGridView.RowCount * 5;
@@ -365,10 +334,9 @@ namespace Coursework
             if (Count == 0)
                 MessageBox.Show("Not found, each diciplines");
             else
-                MessageBox.Show("Subject: " +  dicipline[p] + "\n");
-            richText.Text += "The subject was found, on which more twos\n";
-        }                
-        private void button_check_password_Click(object sender, EventArgs e)
+                MessageBox.Show("Subject: " + dicipline[p] + "\n");
+        }
+        void Check_password()
         {
             if (textBox_check_password.Text == textBox_password.Text && textBox_check_password.Text != "")// проверка пароля
             {
@@ -376,7 +344,7 @@ namespace Coursework
                 Menu.SelectedTab = Menu.TabPages[3];
                 button_check_password.Enabled = false;
                 button_Delete.Enabled = false;
-            }           
+            }
             else
                 MessageBox.Show("Wrong Password!\nLook your password on the page Create and repid please");
 
@@ -385,19 +353,19 @@ namespace Coursework
             edit_faculty.Text = dataGridView.Rows[index_search].Cells[2].Value.ToString();
             edit_course.Value = Convert.ToDecimal(dataGridView.Rows[index_search].Cells[3].Value);
         }
-        private void button_Delete_Click(object sender, EventArgs e)
+        void Remove_student()
         {
             string name = dataGridView.Rows[index_search].Cells[0].Value.ToString();
             dataGridView.Rows.RemoveAt(index_search); // удаляем студента из базы по индексу найденому с помощью поиска
             dataGridView.Refresh();
             textBox_search.Text = "";
             MessageBox.Show("All data about student, deleted successfully");
-            richText.Text += "The student " + name + 
+            richText.Text += "The student " + name +
                 " was deleted from database\n";
         }
-        private void button_choose_subject_Click(object sender, EventArgs e)
+        void Choose_subject()
         {
-            // изменение информации о предмете
+            //По нажатию кнопки выбираем предмет для редактирования 
             int selection = Convert.ToInt32(choose_subject.Value);
             switch (selection)
             {
@@ -430,10 +398,10 @@ namespace Coursework
                     break;
             }
         }
-        private void button_change_data_Click(object sender, EventArgs e)
+        void Edit_main_data()
         {
             count = 0;
-            dataGridView.Rows[index_search].Cells[0].Value = edit_name.Text;            
+            dataGridView.Rows[index_search].Cells[0].Value = edit_name.Text;
             dataGridView.Rows[index_search].Cells[2].Value = edit_faculty.Text;
             dataGridView.Rows[index_search].Cells[3].Value = edit_course.Value;
             for (int i = 0; i < dataGridView.RowCount; i++)
@@ -451,14 +419,13 @@ namespace Coursework
                 else
                     continue;
             }
-            if(count == 2)
+            if (count == 2)
                 dataGridView.Rows[index_search].Cells[1].Value = edit_record.Text;
-            else if(count == 1)
+            else if (count == 1)
                 MessageBox.Show("Error!\n Please repeat input");
         }
-        private void button_change_progress_Click(object sender, EventArgs e)
+        void Edit_progress()
         {
-            //По нажатию кнопки выбираем предмет для редактирования 
             int selection = Convert.ToInt32(choose_subject.Value);
             switch (selection)
             {
@@ -488,20 +455,12 @@ namespace Coursework
                     dataGridView.Rows[index_search].Cells[18].Value = edit_mark.Value;
                     break;
                 default:
-                    break;                      
+                    break;
             }
         }
-        private void save_changes_Click(object sender, EventArgs e)
+        void Function_Remove()
         {
-            dataGridView.Refresh();
-            textBox_search.Text = "";
-            MessageBox.Show("Entered data saved");
-            richText.Text += "Database was edited";
-            Menu.TabPages.Remove(tabPageEdit); // скрываем раздел редактирование
-        }
-        private void remove_losers_Click(object sender, EventArgs e)
-        {
-            int k = 0, number = 0, count = 0, n_row = dataGridView.RowCount;            
+            int k = 0, number = 0, count = 0, n_row = dataGridView.RowCount;
             while (number != dataGridView.RowCount)
             {
                 k = 6;
@@ -533,6 +492,123 @@ namespace Coursework
             else
                 MessageBox.Show("Not found, such students");
         }
+        void Check_input_text(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('\b')) return;
+            if (e.KeyChar.Equals(' ')) return;
+
+            var tb = (TextBox)sender;
+            if (e.KeyChar.Equals('-'))
+            {
+                e.Handled = tb.SelectionStart == 0 || tb.Text[tb.SelectionStart - 1].Equals('-');
+                if (!e.Handled)
+                {
+                    return;
+                }
+            }
+            e.Handled = !char.IsLetter(e.KeyChar);
+        }
+        void Check_input_digit(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('\b')) return;
+            e.Handled = !char.IsDigit(e.KeyChar);
+            if (!(Char.IsDigit(e.KeyChar)))
+            {
+                if (e.KeyChar != (char)Keys.Back)
+                    e.Handled = true;
+            }
+        }
+        private void button_add_Click(object sender, EventArgs e)
+        {
+            input.check_enabled = 0;
+            count_record = 0;
+            if (dataGridView.RowCount != 0)
+            {
+                for (int i = 0; i < dataGridView.RowCount; i++)
+                {
+                    if (dataGridView.Rows[i].Cells[1].Value.ToString() == textBox_record.Text) // проверка на сходимость номеров зачетки
+                        count_record++;
+                }
+                if (count_record == 0 && textBox_name.Text != "" && textBox_record.Text != "")
+                    Input_student(); 
+                else
+                    MessageBox.Show("That student already exists.\nRepeat input");
+            }
+            else
+            {
+                if (textBox_name.Text != "" && textBox_record.Text != "")
+                    Input_student();
+                else
+                    MessageBox.Show("Input error!.\nRepeat please");
+            }
+        }
+        private void button_password_Click_1(object sender, EventArgs e)
+        {
+            Generate_Password();
+            richText.Text += "Password was generated: " + textBox_password.Text + "\n";
+        }
+        private void button_thebest_Click(object sender, EventArgs e)
+        {
+            Search_the_best_student();
+        }
+        private void button_dupes_Click(object sender, EventArgs e)
+        {
+            Search_the_losers();
+        }
+        private void button_search_Click(object sender, EventArgs e)
+        {
+            Search_Student();
+        }
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Open_File_txt();           
+            MessageBox.Show("File opened");
+            Button_true();
+            richText.Text += "Your data from File were opened\n";
+        }
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Save_File_txt();
+            MessageBox.Show("File saved");
+            richText.Text += "\nYour data were saved to File";
+        }
+        private void button_discipline_Click(object sender, EventArgs e)
+        {
+            Difficult_subject();
+            richText.Text += "The subject was found, on which more twos\n";
+        }                
+        private void button_check_password_Click(object sender, EventArgs e)
+        {
+            Check_password();
+        }
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            Remove_student();
+        }
+        private void button_choose_subject_Click(object sender, EventArgs e)
+        {
+            Choose_subject();
+        }
+        private void button_change_data_Click(object sender, EventArgs e)
+        {
+            Edit_main_data();
+        }
+        private void button_change_progress_Click(object sender, EventArgs e)
+        {
+            Edit_progress();
+        }
+        private void save_changes_Click(object sender, EventArgs e)
+        {
+            dataGridView.Refresh();
+            textBox_search.Text = "";
+            MessageBox.Show("Entered data saved");
+            richText.Text += "Database was edited";
+            Menu.TabPages.Remove(tabPageEdit); // скрываем раздел редактирование
+        }
+        private void remove_losers_Click(object sender, EventArgs e)
+        {
+            Function_Remove();
+        }
         private void saveInXlsxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Excel.Application excelapp = new Excel.Application();
@@ -549,8 +625,7 @@ namespace Coursework
             }
 
             SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "Excel (*.xlsx)|*.xlsx";
-                        
+            saveDialog.Filter = "Excel (*.xlsx)|*.xlsx";                        
             string path = null;
             saveDialog.ShowDialog();
             path = saveDialog.FileName;
@@ -616,33 +691,7 @@ namespace Coursework
             Process.Start(@"C:\Users\Andrew Buteskul\Course_work\Coursework\Coursework\Manual.chm"); // запускает справку
         }
 
-        //-------------------------------Checks----------------------------------------
-        void Check_input_text(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar.Equals('\b')) return;
-            if (e.KeyChar.Equals(' ')) return;
-
-            var tb = (TextBox)sender;
-            if (e.KeyChar.Equals('-'))
-            {
-                e.Handled = tb.SelectionStart == 0 || tb.Text[tb.SelectionStart - 1].Equals('-');
-                if (!e.Handled)
-                {
-                    return;
-                }
-            }
-            e.Handled = !char.IsLetter(e.KeyChar);
-        }
-        void Check_input_digit(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar.Equals('\b')) return;
-            e.Handled = !char.IsDigit(e.KeyChar);
-            if (!(Char.IsDigit(e.KeyChar)))
-            {
-                if (e.KeyChar != (char)Keys.Back)
-                    e.Handled = true;
-            }
-        }
+        //-------------------------------Checks----------------------------------------        
         private void textBox_name_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             Check_input_text(sender, e);
